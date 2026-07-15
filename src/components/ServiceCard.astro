@@ -1,0 +1,48 @@
+---
+interface Props {
+  icon: any;
+  iconSvg?: string;
+  title: string;
+  text: string;
+  index?: number;
+}
+const { icon: Icon, iconSvg, title, text, index = 0 } = Astro.props;
+---
+
+<div
+  class="js-animate group rounded-[24px] border border-[#d9d2c5] bg-[#fbf8f0] p-5 transition duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-xl hover:shadow-black/5"
+  style={`transition-delay: ${index * 80}ms`}
+>
+  <div class="mb-4 flex items-center gap-3">
+    <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-[#e5eee1] transition group-hover:bg-[#789873]">
+      {iconSvg ? (
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.9"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="text-[#789873] transition group-hover:text-white"
+          set:html={iconSvg}
+        ></svg>
+      ) : (
+        <Icon
+          size={18}
+          strokeWidth={1.9}
+          class="text-[#789873] transition group-hover:text-white"
+        />
+      )}
+    </div>
+
+    <h4 class="text-[18px] font-semibold tracking-[-0.02em] text-[#111a13]">
+      {title}
+    </h4>
+  </div>
+
+  <p class="text-[13px] leading-6 text-[#556055] md:text-[14px] md:leading-7">
+    {text}
+  </p>
+</div>

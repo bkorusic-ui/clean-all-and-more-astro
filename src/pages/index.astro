@@ -1,11 +1,27 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import Services from "../components/Services.astro";
+import About from "../components/About.astro";
+import Process from "../components/Process.astro";
+import Faq from "../components/Faq.astro";
+import Contact from "../components/Contact.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+
 ---
+<BaseLayout
+  title="Clean all and more | Hausmeisterservice, Gartenpflege & Gebäudereinigung"
+  description="Clean all and more ist Ihr Ansprechpartner für Hausmeisterservice, Gartenpflege, Gebäudereinigung und Objektbetreuung in Stuttgart, Ludwigsburg und Umgebung. Jetzt kostenlos beraten lassen."
+  canonical="https://www.cleanallandmore.de/"
+>
 
-<Layout>
-	<Welcome />
-</Layout>
+  <Hero />
+  <Services />
+  <About />
+  <Process />
+  <Faq />
+  <Contact />
+  
+  
+  
+</BaseLayout>

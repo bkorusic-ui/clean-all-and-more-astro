@@ -1,0 +1,177 @@
+---
+const faqs = [
+  {
+    question: "In welchen Regionen sind Sie tätig?",
+    answer:
+      "Wir betreuen Kunden in Stuttgart und Umgebung. Gerne prüfen wir auch Anfragen aus angrenzenden Orten.",
+  },
+  {
+    question: "Erstellen Sie ein kostenloses Angebot?",
+    answer:
+      "Ja. Nach einem kurzen Gespräch oder einer Besichtigung erhalten Sie ein unverbindliches und kostenloses Angebot.",
+  },
+  {
+    question: "Bieten Sie regelmäßige Objektbetreuung an?",
+    answer:
+      "Ja. Wir übernehmen regelmäßige Hausmeisterdienste, Objektpflege, Treppenhausreinigung und Gartenpflege.",
+  },
+  {
+    question: "Welche Gartenarbeiten übernehmen Sie?",
+    answer:
+      "Wir übernehmen Rasenpflege, Heckenschnitt, Beetpflege, saisonale Arbeiten und die Pflege von Außenanlagen.",
+  },
+  {
+    question: "Wie schnell melden Sie sich zurück?",
+    answer:
+      "In der Regel melden wir uns innerhalb von 24 Stunden, um Ihr Anliegen zu besprechen.",
+  },
+];
+---
+
+<section class="bg-[#eef2e8] px-5 py-16 md:px-8 md:py-24">
+  <div class="mx-auto max-w-4xl">
+    <details class="faq-wrapper">
+      <summary class="group w-full cursor-pointer list-none text-left">
+        <p class="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-[#789873]">
+          FAQ
+        </p>
+
+        <div class="flex items-center justify-between">
+          <h2 class="text-[34px] font-semibold leading-tight tracking-[-0.04em] text-[#111a13] md:text-[50px]">
+            Häufig gestellte Fragen
+          </h2>
+
+          <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            class="faq-main-chevron h-[30px] w-[30px] shrink-0 text-[#789873] transition-transform duration-300"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="m6 9 6 6 6-6"></path>
+          </svg>
+        </div>
+      </summary>
+
+      <div class="faq-list mt-10 space-y-4 overflow-hidden">
+        {
+          faqs.map((faq, index) => (
+            <details
+              class="faq-item overflow-hidden rounded-[22px] border border-[#d9d2c5] bg-[#fbf8f0] shadow-sm"
+              open={index === 0}
+              style={`--faq-delay: ${index * 0.05}s`}
+            >
+              <summary class="flex w-full cursor-pointer list-none items-center justify-between gap-5 px-5 py-5 text-left md:px-6">
+                <span class="text-[17px] font-semibold text-[#111a13] md:text-[19px]">
+                  {faq.question}
+                </span>
+
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  class="faq-chevron h-5 w-5 shrink-0 text-[#789873] transition-transform duration-300"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m6 9 6 6 6-6"></path>
+                </svg>
+              </summary>
+
+              <div class="faq-answer overflow-hidden">
+                <div class="px-5 pb-5 text-[15px] leading-7 text-[#4d594d] md:px-6 md:text-[16px]">
+                  {faq.answer}
+                </div>
+              </div>
+            </details>
+          ))
+        }
+      </div>
+    </details>
+  </div>
+</section>
+
+<style>
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary::marker {
+    content: "";
+  }
+
+  .faq-wrapper[open] > summary .faq-main-chevron {
+    transform: rotate(180deg);
+  }
+
+  .faq-item[open] > summary .faq-chevron {
+    transform: rotate(180deg);
+  }
+
+  .faq-list {
+    animation: faq-list-open 0.4s ease both;
+  }
+
+  .faq-item {
+    animation: faq-item-open 0.4s ease both;
+    animation-delay: var(--faq-delay);
+  }
+
+  .faq-answer {
+    animation: faq-answer-open 0.3s ease both;
+  }
+
+  @keyframes faq-list-open {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes faq-item-open {
+    from {
+      opacity: 0;
+      transform: translateY(15px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes faq-answer-open {
+    from {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .faq-list,
+    .faq-item,
+    .faq-answer {
+      animation: none;
+    }
+
+    .faq-main-chevron,
+    .faq-chevron {
+      transition: none;
+    }
+  }
+</style>

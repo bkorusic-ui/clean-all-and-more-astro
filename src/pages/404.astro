@@ -1,0 +1,97 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="404 – Seite nicht gefunden | Clean all and more"
+  description="Die gesuchte Seite konnte leider nicht gefunden werden."
+>
+  <main class="min-h-[70vh] flex items-center justify-center bg-[#f8f6ee] px-6 py-24">
+    <div class="mx-auto max-w-2xl text-center">
+      <p class="text-sm font-semibold uppercase tracking-[0.3em] text-[#789873]">
+        Fehler 404
+      </p>
+
+      <h1 class="mt-4 text-5xl font-semibold tracking-[-0.04em] text-[#111a13] md:text-7xl">
+        Seite nicht gefunden
+      </h1>
+
+      <p class="mx-auto mt-6 max-w-xl text-lg leading-8 text-[#556055]">
+        Die Seite, die Sie aufrufen wollten, existiert nicht oder wurde verschoben.
+        Nutzen Sie die Navigation oder kehren Sie zur Startseite zurück.
+      </p>
+
+      <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <a
+          href="/"
+          class="rounded-full bg-[#789873] px-8 py-4 text-white font-medium transition hover:bg-[#6b8766]"
+        >
+          Zur Startseite
+        </a>
+
+        <a
+          href="/referenzen"
+          class="rounded-full border border-[#789873] px-8 py-4 font-medium text-[#789873] transition hover:bg-[#789873] hover:text-white"
+        >
+          Referenzen ansehen
+        </a>
+      </div>
+
+      <div class="mt-16 rounded-[28px] border border-[#d8d2c4] bg-white/60 p-8 text-left">
+        <h2 class="text-2xl font-semibold text-[#111a13]">
+          Beliebte Seiten
+        </h2>
+
+        <div class="mt-6 grid gap-4 sm:grid-cols-2">
+          <a
+            href="/hausmeisterservice"
+            class="rounded-2xl border border-[#d8d2c4] p-5 transition hover:border-[#789873] hover:bg-[#f5f7f2]"
+          >
+            <h3 class="font-semibold text-[#111a13]">
+              Hausmeisterservice
+            </h3>
+            <p class="mt-2 text-sm text-[#556055]">
+              Objektbetreuung für Wohnanlagen und Gewerbe.
+            </p>
+          </a>
+
+          <a
+            href="/gartenpflege-stuttgart"
+            class="rounded-2xl border border-[#d8d2c4] p-5 transition hover:border-[#789873] hover:bg-[#f5f7f2]"
+          >
+            <h3 class="font-semibold text-[#111a13]">
+              Gartenpflege
+            </h3>
+            <p class="mt-2 text-sm text-[#556055]">
+              Rasenpflege, Heckenschnitt und Außenanlagen.
+            </p>
+          </a>
+
+          <a
+            href="/gebaeudereinigung"
+            class="rounded-2xl border border-[#d8d2c4] p-5 transition hover:border-[#789873] hover:bg-[#f5f7f2]"
+          >
+            <h3 class="font-semibold text-[#111a13]">
+              Gebäudereinigung
+            </h3>
+            <p class="mt-2 text-sm text-[#556055]">
+              Zuverlässige Reinigung für private und gewerbliche Objekte.
+            </p>
+          </a>
+
+          <a
+            href="/#kontakt"
+            class="rounded-2xl border border-[#d8d2c4] p-5 transition hover:border-[#789873] hover:bg-[#f5f7f2]"
+          >
+            <h3 class="font-semibold text-[#111a13]">
+              Kontakt
+            </h3>
+            <p class="mt-2 text-sm text-[#556055]">
+              Jetzt kostenlos anfragen und beraten lassen.
+            </p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+</BaseLayout>

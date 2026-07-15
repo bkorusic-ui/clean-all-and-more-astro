@@ -1,0 +1,318 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Contact from "../components/Contact.astro";
+import References from "../components/References.tsx";
+import RelatedServices from "../components/RelatedServices.astro";
+
+const services = [
+  "Reinigung von Büroflächen und Gewerbeobjekten",
+  "Treppenhausreinigung für Wohnanlagen und Mehrfamilienhäuser",
+  "Reinigung von Eingangsbereichen und Gemeinschaftsflächen",
+  "Fensterreinigung und Glasflächenreinigung",
+  "Sanitärreinigung nach individuellem Bedarf",
+  "Regelmäßige Unterhaltsreinigung",
+  "Grundreinigung bei stärkerer Verschmutzung",
+  "Individuelle Reinigungskonzepte für Ihr Objekt",
+];
+
+const benefits = [
+  "Saubere und gepflegte Räume",
+  "Zuverlässige Reinigungstermine",
+  "Flexible Reinigungsintervalle",
+  "Persönlicher Ansprechpartner",
+  "Ideal für Unternehmen, Hausverwaltungen und Eigentümer",
+  "Reinigung abgestimmt auf Ihr Objekt",
+];
+
+const steps = [
+  ["1", "Anfrage senden", "Sie kontaktieren uns per Formular, Telefon oder WhatsApp."],
+  ["2", "Objekt besprechen", "Wir klären Fläche, Reinigungsbedarf und gewünschte Intervalle."],
+  ["3", "Angebot erhalten", "Sie bekommen ein individuelles Angebot für Ihre Gebäudereinigung."],
+  ["4", "Reinigung starten", "Wir reinigen zuverlässig, gründlich und nach klarer Absprache."],
+];
+
+const faqs = [
+  [
+    "Welche Objekte reinigen Sie?",
+    "Wir reinigen Wohnanlagen, Mehrfamilienhäuser, Büroflächen, Gewerbeobjekte, Eingangsbereiche, Treppenhäuser und Gemeinschaftsflächen in Stuttgart und Umgebung.",
+  ],
+  [
+    "Bieten Sie regelmäßige Gebäudereinigung an?",
+    "Ja. Wir bieten regelmäßige Unterhaltsreinigung sowie individuelle Reinigungsintervalle passend zu Ihrem Objekt an.",
+  ],
+  [
+    "Übernehmen Sie auch Treppenhausreinigung?",
+    "Ja. Die Treppenhausreinigung gehört zu unseren häufig nachgefragten Leistungen für Wohnanlagen und Mehrfamilienhäuser.",
+  ],
+  [
+    "Kann ich ein kostenloses Angebot erhalten?",
+    "Ja. Kontaktieren Sie uns unverbindlich und wir erstellen ein individuelles Angebot für Ihre Gebäudereinigung in Stuttgart.",
+  ],
+];
+
+const whyPoints = [
+  [
+    "Gepflegter Eindruck",
+    "Saubere Räume und Flächen sorgen für Vertrauen bei Mietern, Kunden und Besuchern.",
+  ],
+  [
+    "Werterhalt",
+    "Regelmäßige Reinigung schützt Oberflächen und trägt zum langfristigen Werterhalt bei.",
+  ],
+  [
+    "Zuverlässigkeit",
+    "Sie erhalten feste Absprachen, klare Reinigungsintervalle und persönliche Betreuung.",
+  ],
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map(([question, answer]) => ({
+    "@type": "Question",
+    name: question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: answer,
+    },
+  })),
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  serviceType: "Gebäudereinigung",
+  name: "Gebäudereinigung Stuttgart",
+  description:
+    "Professionelle Gebäudereinigung für Büros, Treppenhäuser, Wohnanlagen und Gewerbe. Zuverlässig, gründlich und flexibel.",
+  url: "https://www.cleanallandmore.de/gebaeudereinigung",
+  provider: {
+    "@type": "LocalBusiness",
+    "@id": "https://www.cleanallandmore.de/#unternehmen",
+    name: "Clean all and more",
+  },
+  areaServed: [
+    { "@type": "City", name: "Stuttgart" },
+    { "@type": "City", name: "Ludwigsburg" },
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Leistungen in der Gebäudereinigung",
+    itemListElement: services.map((item) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: item,
+      },
+    })),
+  },
+};
+---
+
+<BaseLayout
+  title="Gebäudereinigung | Clean all and more"
+  description="Professionelle Gebäudereinigung für Büros, Treppenhäuser, Wohnanlagen und Gewerbe. Zuverlässig, gründlich und flexibel."
+  canonical="https://www.cleanallandmore.de/gebaeudereinigung"
+>
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify(serviceSchema)}
+  ></script>
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify(faqSchema)}
+  ></script>
+
+  <main class="bg-[#f8f6ee] text-[#111a13]">
+    <!-- Hero -->
+    <section class="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-5 py-24 md:grid-cols-2 md:px-8 md:py-32">
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-[0.22em] text-[#789873]">
+          Gebäudereinigung Stuttgart
+        </p>
+
+        <h1 class="mt-5 text-4xl font-semibold leading-[1.05] tracking-[-0.04em] md:text-6xl">
+          Professionelle Gebäudereinigung in Stuttgart
+        </h1>
+
+        <p class="mt-6 max-w-2xl text-lg leading-8 text-[#556055] md:text-xl md:leading-9">
+          Clean all and more sorgt für saubere Gebäude, gepflegte
+          Gemeinschaftsflächen und einen professionellen ersten Eindruck –
+          für Wohnanlagen, Unternehmen und Gewerbeobjekte in Stuttgart und
+          Umgebung.
+        </p>
+
+        <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+          <a
+            href="#kontakt"
+            class="rounded-full bg-[#789873] px-7 py-4 text-center font-semibold text-white shadow-lg shadow-[#789873]/20 transition hover:bg-[#6f8d67]"
+          >
+            Kostenloses Angebot anfragen
+          </a>
+
+          <a
+            href="/#leistungen"
+            class="rounded-full border border-[#d8d2c4] px-7 py-4 text-center font-semibold transition hover:bg-white"
+          >
+            Leistungen ansehen
+          </a>
+        </div>
+      </div>
+
+      <div class="overflow-hidden rounded-[32px] shadow-2xl shadow-black/10">
+        <img
+          src="/images/hero/hausmeisterservice-wohnanlage-stuttgart-1.webp"
+          alt="Professionelle Gebäudereinigung und Objektpflege in Stuttgart"
+          width="720"
+          height="520"
+          loading="eager"
+          decoding="async"
+          class="h-[320px] w-full object-cover md:h-[520px]"
+        />
+      </div>
+    </section>
+
+    <!-- Einleitung -->
+    <section class="mx-auto max-w-5xl px-5 pb-20 md:px-8">
+      <h2 class="text-3xl font-semibold tracking-[-0.03em] md:text-4xl">
+        Saubere Gebäude für einen gepflegten Eindruck
+      </h2>
+
+      <p class="mt-5 text-lg leading-8 text-[#556055]">
+        Sauberkeit ist ein wichtiger Teil des ersten Eindrucks. Gepflegte
+        Eingangsbereiche, saubere Treppenhäuser und ordentliche
+        Gemeinschaftsflächen zeigen Besuchern, Mietern und Kunden, dass ein
+        Objekt professionell betreut wird.
+      </p>
+
+      <p class="mt-4 text-lg leading-8 text-[#556055]">
+        Unsere Gebäudereinigung in Stuttgart richtet sich an Hausverwaltungen,
+        Eigentümer, Unternehmen und Gewerbekunden. Wir stimmen die Reinigung
+        individuell auf Ihr Objekt ab und sorgen für zuverlässige Ergebnisse.
+      </p>
+    </section>
+
+    <!-- Warum -->
+    <section class="bg-white/45 py-20">
+      <div class="mx-auto max-w-6xl px-5 md:px-8">
+        <h2 class="text-3xl font-semibold tracking-[-0.03em] md:text-4xl">
+          Warum professionelle Gebäudereinigung wichtig ist
+        </h2>
+
+        <div class="mt-8 grid gap-5 md:grid-cols-3">
+          {
+            whyPoints.map(([title, text]) => (
+              <div class="rounded-3xl border border-[#d8d2c4] bg-[#f8f6ee] p-7">
+                <h3 class="text-xl font-semibold">{title}</h3>
+                <p class="mt-3 leading-7 text-[#556055]">{text}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Leistungen -->
+    <section class="mx-auto max-w-6xl px-5 py-20 md:px-8">
+      <h2 class="text-3xl font-semibold tracking-[-0.03em] md:text-4xl">
+        Unsere Leistungen in der Gebäudereinigung
+      </h2>
+
+      <div class="mt-8 grid gap-5 md:grid-cols-2">
+        {
+          services.map((item) => (
+            <div class="rounded-3xl border border-[#d8d2c4] bg-white/45 p-6 text-[#556055]">
+              {item}
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Vorteile -->
+    <section class="bg-[#111a13] py-20 text-white">
+      <div class="mx-auto max-w-6xl px-5 md:px-8">
+        <h2 class="text-3xl font-semibold tracking-[-0.03em] md:text-4xl">
+          Ihre Vorteile auf einen Blick
+        </h2>
+
+        <div class="mt-8 grid gap-4 md:grid-cols-3">
+          {
+            benefits.map((benefit) => (
+              <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+                {benefit}
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- So arbeiten wir -->
+    <section class="mx-auto max-w-6xl px-5 py-20 md:px-8">
+      <h2 class="text-3xl font-semibold tracking-[-0.03em] md:text-4xl">
+        So arbeiten wir
+      </h2>
+
+      <div class="mt-8 grid gap-5 md:grid-cols-4">
+        {
+          steps.map(([number, title, text]) => (
+            <div class="rounded-3xl border border-[#d8d2c4] bg-white/45 p-6">
+              <div class="flex h-10 w-10 items-center justify-center rounded-full bg-[#789873] font-bold text-white">
+                {number}
+              </div>
+              <h3 class="mt-5 text-lg font-semibold">{title}</h3>
+              <p class="mt-3 text-sm leading-7 text-[#556055]">{text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Einsatzgebiet -->
+    <section class="bg-white/45 py-20">
+      <div class="mx-auto max-w-5xl px-5 md:px-8">
+        <h2 class="text-3xl font-semibold tracking-[-0.03em] md:text-4xl">
+          Gebäudereinigung in Stuttgart und Umgebung
+        </h2>
+
+        <p class="mt-5 text-lg leading-8 text-[#556055]">
+          Wir übernehmen Gebäudereinigung in Stuttgart und Umgebung. Dazu
+          gehören unter anderem Wohnanlagen, Mehrfamilienhäuser,
+          Gewerbeobjekte, Büroflächen, Eingangsbereiche und
+          Gemeinschaftsflächen.
+        </p>
+
+        <p class="mt-4 text-lg leading-8 text-[#556055]">
+          Je nach Objekt reinigen wir regelmäßig, saisonal oder nach
+          individueller Vereinbarung.
+        </p>
+      </div>
+    </section>
+
+    <!-- Referenzen -->
+    <References client:load />
+
+    <!-- FAQ -->
+    <section class="mx-auto max-w-5xl px-5 py-20 md:px-8">
+      <h2 class="text-3xl font-semibold tracking-[-0.03em] md:text-4xl">
+        Häufige Fragen zur Gebäudereinigung
+      </h2>
+
+      <div class="mt-8 space-y-5">
+        {
+          faqs.map(([question, answer]) => (
+            <div class="rounded-3xl border border-[#d8d2c4] bg-white/45 p-6">
+              <h3 class="text-xl font-semibold">{question}</h3>
+              <p class="mt-3 leading-7 text-[#556055]">{answer}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Kontakt -->
+    <RelatedServices current="/gebaeudereinigung-stuttgart"  />
+    <Contact />
+  </main>
+</BaseLayout>

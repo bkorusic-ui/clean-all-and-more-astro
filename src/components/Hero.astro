@@ -1,0 +1,289 @@
+---
+import { ChevronLeft, ChevronRight } from "lucide-astro";
+
+const heroImages = [
+  {
+    src: "/images/hero/Heckenschnitt-gartenpflege-stuttgart.webp",
+    alt: "Professioneller Heckenschnitt und Gartenpflege in Stuttgart durch Clean all and more.",
+  },
+  {
+    src: "/images/garden/heckenschnitt-stuttgart-cut3.webp",
+    alt: "Sauber geschnittene Hecke nach professioneller Gartenpflege in Stuttgart.",
+  },
+  {
+    src: "/images/hero/hausmeisterservice-gepflegte-wohnanlage-stuttgart.webp",
+    alt: "Gepflegte Wohnanlage mit Hausmeisterservice und Gartenpflege in Stuttgart.",
+  },
+  {
+    src: "/images/house/Hausmeisterservice-Treppenhaus-Stuttgart-Ludwigsburg2.webp",
+    alt: "Wohnanlage in Stuttgart mit zuverlässigem Hausmeisterservice.",
+  },
+];
+---
+
+<section class="bg-[#f8f6ee]">
+  <div
+    class="mx-auto grid min-h-[calc(100vh-80px)] max-w-7xl grid-cols-1 items-start gap-10 px-5 pb-12 pt-6 md:min-h-[calc(100vh-96px)] md:grid-cols-2 md:items-center md:gap-16 md:px-8 md:pb-16 md:pt-8"
+  >
+    <div class="hero-copy">
+      <div
+        class="inline-flex items-center gap-2 rounded-full border border-[#d8d2c4] bg-white/30 px-4 py-2 text-[10px] font-medium uppercase tracking-[0.16em] text-[#6f8d67] md:text-[11px]"
+      >
+        <span class="h-2 w-2 rounded-full bg-[#789873]"></span>
+        Hausmeisterservice &amp; Gartenpflege in Stuttgart &amp; Umgebung
+      </div>
+
+      <h1
+        class="mt-6 text-4xl font-semibold leading-tight text-[#111a13] sm:text-5xl lg:text-6xl"
+      >
+        Gepflegte
+        <br />
+        Immobilien.
+        <span class="text-[#7f9a77]">
+          <br />
+          Lebendige Gärten.
+        </span>
+      </h1>
+
+      <p
+        class="mt-6 max-w-xl text-[14px] leading-7 text-[#556055] md:mt-8 md:text-xl md:leading-9"
+      >
+        Clean all and more ist Ihr zuverlässiger Partner für Hausmeisterservice,
+        Gebäudereinigung und Gartenpflege in Stuttgart und Umgebung. Wir
+        betreuen Wohnanlagen, Gewerbeobjekte und Privatimmobilien –
+        professionell, flexibel und mit höchsten Qualitätsansprüchen.
+      </p>
+
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row md:mt-10 md:gap-5">
+        <a
+          href="#kontakt"
+         class="rounded-full bg-[#789873] px-5 py-2.5 text-center text-[11px] font-semibold !text-white shadow-md shadow-[#789873]/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#6f8d67] hover:shadow-lg md:px-6 md:py-3 md:text-[15px]"
+        >
+          Kostenloses Angebot anfragen
+        </a>
+
+        <a
+          href="#leistungen"
+          class="rounded-full border border-[#d8d2c4] bg-[#f8f6ee] px-4 py-2 text-center text-[10px] font-semibold text-[#111a13] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#789873]/50 hover:bg-white md:px-6 md:py-3 md:text-base"
+        >
+          Unsere Leistungen ansehen
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-image-wrap">
+      <div
+        id="hero-slider"
+        class="group relative overflow-hidden rounded-[26px] shadow-2xl shadow-black/10 md:rounded-[32px]"
+      >
+        <img
+          id="hero-image"
+          src={heroImages[0].src}
+          alt={heroImages[0].alt}
+          width="720"
+          height="520"
+          fetchpriority="high"
+          loading="eager"
+          decoding="async"
+          class="aspect-[16/10] w-full scale-[1.06] object-cover transition-transform duration-500"/>
+
+        <div class="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
+          {
+            heroImages.map((image, index) => (
+              <button
+                type="button"
+                class={`hero-dot h-2 rounded-full transition-all duration-500 ${
+                  index === 0 ? "w-7 bg-white/90" : "w-2 bg-white/45"
+                }`}
+                data-index={index}
+                aria-label={`Hero-Bild ${index + 1} anzeigen`}
+              />
+            ))
+          }
+        </div>
+
+        <button
+          type="button"
+          id="hero-prev"
+          aria-label="Vorheriges Bild"
+          class="absolute bottom-4 left-4 hidden h-9 w-9 items-center justify-center rounded-full bg-white/70 text-[#111a13] opacity-0 shadow-md backdrop-blur-sm transition-all duration-300 hover:bg-white group-hover:opacity-100 md:flex"
+        >
+          <ChevronLeft class="h-5 w-5" />
+        </button>
+
+        <button
+          type="button"
+          id="hero-next"
+          aria-label="Nächstes Bild"
+          class="absolute bottom-4 right-4 hidden h-9 w-9 items-center justify-center rounded-full bg-white/70 text-[#111a13] opacity-0 shadow-md backdrop-blur-sm transition-all duration-300 hover:bg-white group-hover:opacity-100 md:flex"
+        >
+          <ChevronRight class="h-5 w-5" />
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="border-t border-[#d8d2c4]">
+    <div
+      class="hero-stats mx-auto grid max-w-7xl grid-cols-1 gap-5 px-5 py-6 sm:grid-cols-3 md:px-8 md:py-14"
+    >
+      <div>
+        <p class="text-[11px] uppercase tracking-[0.22em] text-[#556055] md:text-sm">
+          Erfahrung
+        </p>
+        <p class="mt-3 text-3xl font-bold text-[#111a13] md:text-4xl">
+          10+ Jahre
+        </p>
+      </div>
+
+      <div>
+        <p class="text-[11px] uppercase tracking-[0.22em] text-[#556055] md:text-sm">
+          Betreute Objekte
+        </p>
+        <p class="mt-3 text-3xl font-bold text-[#111a13] md:text-4xl">
+          21+
+        </p>
+      </div>
+
+      <div>
+        <p class="text-[11px] uppercase tracking-[0.22em] text-[#556055] md:text-sm">
+          Einsatzgebiet
+        </p>
+        <p class="mt-3 text-3xl font-bold text-[#111a13] md:text-4xl">
+          Stuttgart, Ludwigsburg &amp; Umgebung
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ heroImages }}>
+  const slider = document.querySelector("#hero-slider");
+  const image = document.querySelector("#hero-image");
+  const dots = Array.from(document.querySelectorAll(".hero-dot"));
+  const prevBtn = document.querySelector("#hero-prev");
+  const nextBtn = document.querySelector("#hero-next");
+
+  let activeIndex = 0;
+  let paused = false;
+  let touchStart = null;
+  let intervalId;
+
+  const showImage = (index) => {
+    if (!(image instanceof HTMLImageElement)) return;
+
+    activeIndex = (index + heroImages.length) % heroImages.length;
+
+    image.style.opacity = "0";
+
+    window.setTimeout(() => {
+      image.src = heroImages[activeIndex].src;
+      image.alt = heroImages[activeIndex].alt;
+      image.style.opacity = "1";
+
+      dots.forEach((dot, dotIndex) => {
+        dot.classList.toggle("w-7", dotIndex === activeIndex);
+        dot.classList.toggle("bg-white/90", dotIndex === activeIndex);
+        dot.classList.toggle("w-2", dotIndex !== activeIndex);
+        dot.classList.toggle("bg-white/45", dotIndex !== activeIndex);
+      });
+    }, 180);
+  };
+
+  const startAutoplay = () => {
+    window.clearInterval(intervalId);
+
+    intervalId = window.setInterval(() => {
+      if (!paused) showImage(activeIndex + 1);
+    }, 4500);
+  };
+
+  dots.forEach((dot) => {
+    dot.addEventListener("click", () => {
+      const index = Number(dot.dataset.index);
+      showImage(index);
+      startAutoplay();
+    });
+  });
+
+  prevBtn?.addEventListener("click", () => {
+    showImage(activeIndex - 1);
+    startAutoplay();
+  });
+
+  nextBtn?.addEventListener("click", () => {
+    showImage(activeIndex + 1);
+    startAutoplay();
+  });
+
+  slider?.addEventListener("mouseenter", () => {
+    paused = true;
+  });
+
+  slider?.addEventListener("mouseleave", () => {
+    paused = false;
+  });
+
+  slider?.addEventListener(
+    "touchstart",
+    (event) => {
+      touchStart = event.touches[0]?.clientX ?? null;
+    },
+    { passive: true }
+  );
+
+  slider?.addEventListener(
+    "touchend",
+    (event) => {
+      if (touchStart === null) return;
+
+      const touchEnd = event.changedTouches[0]?.clientX ?? touchStart;
+      const distance = touchStart - touchEnd;
+
+      if (distance > 50) showImage(activeIndex + 1);
+      if (distance < -50) showImage(activeIndex - 1);
+
+      touchStart = null;
+      startAutoplay();
+    },
+    { passive: true }
+  );
+
+  startAutoplay();
+</script>
+
+<style>
+  .hero-copy,
+  .hero-image-wrap {
+    animation: hero-fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .hero-image-wrap {
+    animation-delay: 0.15s;
+  }
+
+  .hero-stats {
+    animation: hero-fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 0.25s;
+  }
+
+  @keyframes hero-fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(36px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-copy,
+    .hero-image-wrap,
+    .hero-stats {
+      animation: none;
+    }
+  }
+</style>

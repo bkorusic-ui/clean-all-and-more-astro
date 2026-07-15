@@ -1,0 +1,281 @@
+---
+import {
+  Wrench,
+  Sparkle,
+  ShieldCheck,
+  SprayCan,
+  Scissors,
+  Sprout,
+  Flower2,
+  Leaf,
+} from "lucide-astro";
+import ImageSlider from "./ImageSlider.astro";
+import ServiceCard from "./ServiceCard.astro";
+
+const houseImages = [
+  {
+    src: "/images/hero/hausmeisterservice-gepflegte-wohnanlage-stuttgart.webp",
+    alt: "Hausmeisterservice für gepflegte Wohnanlagen in Stuttgart",
+  },
+  {
+    src: "/images/house/Hausmeisterservice-Treppenhaus-Stuttgart-Ludwigsburg.webp",
+    alt: "Wohnanlage in Stuttgart mit zuverlässigem Hausmeisterservice",
+  },
+  {
+    src: "/images/references/objektpflege-mehrfamilienhaus-stuttgart-1.webp",
+    alt: "Gepflegte Außenanlage durch Hausmeisterservice",
+  },
+  {
+    src: "/images/house/Hausmeisterservice-Treppenhaus-Stuttgart-Ludwigsburg2.webp",
+    alt: "Gepflegte Außenanlage durch Hausmeisterservice",
+  },
+  {
+    src: "/images/house/Hausmeisterservice-Treppenhaus-Stuttgart-Ludwigsburg3.webp",
+    alt: "Gepflegte Außenanlage durch Hausmeisterservice",
+  },
+];
+
+const gardenImages = [
+  {
+    src: "/images/garden/Formschnitt.webp",
+    alt: "Professionelle Gartenpflege und Rasenpflege in Stuttgart",
+  },
+  {
+    src: "/images/garden/gartenpflege-rasen-hecke2.webp",
+    alt: "Professioneller Heckenschnitt und Gartenpflege in Stuttgart",
+  },
+  {
+    src: "/images/garden/gartenpflege-rasen-hecke.webp",
+    alt: "Sauber geschnittene Hecke nach Gartenpflege",
+  },
+  {
+    src: "/images/garden/rasenpflege-gartenpflege-stuttgart-1.webp",
+    alt: "Sauber geschnittene Hecke in Ludwigsburg",
+  },
+  {
+    src: "/images/garden/heckenschnitt-stuttgart-cut3.webp",
+    alt: "Sauber geschnittene Hecke nach Gartenpflege",
+  },
+];
+
+const houseServices = [
+  {
+    icon: Wrench,
+    title: "Kleinreparaturen",
+    text: "Schnelle Hilfe bei kleinen Defekten – zuverlässig und unkompliziert.",
+  },
+  {
+    icon: Sparkle,
+    title: "Treppenhaus",
+    text: "Regelmäßige Reinigung gemeinsamer Flächen für ein gepflegtes Objekt.",
+  },
+  {
+    icon: SprayCan,
+    title: "Fensterreinigung",
+    text: "Saubere Fenster und Glasflächen für einen klaren ersten Eindruck.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Objektbetreuung",
+    text: "Kontrollgänge, Müllmanagement und fester Ansprechpartner vor Ort.",
+  },
+];
+
+const gardenServices = [
+  {
+    icon: Scissors,
+    title: "Hecken- & Baumschnitt",
+    text: "Form-, Pflege- und Rückschnitt mit professionellem Werkzeug.",
+  },
+  {
+    icon: Sprout,
+    title: "Rasenpflege",
+    text: "Mähen, Vertikutieren und Düngen für einen gesunden Rasen.",
+  },
+  {
+    icon: Flower2,
+    title: "Beet- & Pflanzpflege",
+    text: "Anlegen, Bepflanzen und saisonale Pflege Ihrer Beete.",
+  },
+  {
+    icon: Leaf,
+    title: "Herbst- & Frühjahrsputz",
+    text: "Laub entfernen und den Garten für die nächste Saison vorbereiten.",
+  },
+];
+---
+
+<section
+  id="leistungen"
+  class="bg-[#f8f6ee] px-5 pt-10 pb-16 md:px-8 md:pt-12 md:pb-20"
+>
+  <div class="mx-auto max-w-7xl">
+    <div class="js-animate">
+      <p class="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-[#789873]">
+        Leistungen
+      </p>
+
+      <h2 class="max-w-3xl text-[34px] font-semibold leading-[1.12] tracking-[-0.04em] text-[#111a13] md:text-[46px]">
+        Hausmeisterservice und Gartenpflege aus einer Hand.
+      </h2>
+
+      <p class="mt-5 max-w-3xl text-[16px] leading-7 text-[#556055] md:text-[18px] md:leading-8">
+        Clean all and more unterstützt Eigentümer, Hausverwaltungen,
+        Unternehmen und Privatkunden in Stuttgart mit zuverlässiger
+        Objektbetreuung, sauberer Gebäudepflege und professioneller
+        Gartenpflege.
+      </p>
+    </div>
+
+    <div class="mt-12 grid grid-cols-1 items-center gap-10 md:mt-14 md:gap-14 lg:grid-cols-[1.05fr_0.95fr]">
+      <div class="js-animate-img">
+        <ImageSlider images={houseImages} height="md:h-[700px]" />
+      </div>
+
+      <div id="hausmeisterservice" class="js-animate scroll-mt-32">
+        <p class="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-[#789873]">
+          Hausmeisterservice
+        </p>
+
+        <h3 class="text-[28px] font-semibold leading-tight tracking-[-0.035em] text-[#111a13] md:text-[36px]">
+          Professioneller Hausmeisterservice in Stuttgart & Umgebung.
+          <br />
+          <span class="text-[24px] font-medium text-[#111a13]">
+            Hinter uns ist es sauber.
+          </span>
+        </h3>
+
+        <p class="mt-5 max-w-xl text-[14px] leading-7 text-[#4d594d] md:text-[18px] md:leading-8">
+          Unser Hausmeisterservice in Stuttgart übernimmt die zuverlässige
+          Betreuung von Wohnanlagen, Mehrfamilienhäusern und Gewerbeobjekten.
+          Von der Treppenhausreinigung über Kleinreparaturen bis zur
+          laufenden Objektpflege erhalten Sie alle Leistungen aus einer Hand.
+        </p>
+
+        <div class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 md:mt-6">
+          {houseServices.map((service, index) => (
+            <ServiceCard
+              icon={service.icon}
+              title={service.title}
+              text={service.text}
+              index={index}
+            />
+          ))}
+        </div>
+
+        <div class="mt-7">
+          <a
+            href="/hausmeisterservice-stuttgart"
+            class="inline-flex rounded-full bg-[#789873] px-6 py-3 font-semibold text-white shadow-lg shadow-[#789873]/20 transition hover:bg-[#6f8d67]"
+          >
+            Mehr zum Hausmeisterservice
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="my-24 flex items-center justify-center md:my-32">
+      <div class="h-px w-full max-w-7xl bg-gradient-to-r from-transparent via-[#d8d2c4] to-transparent" />
+    </div>
+
+    <div class="mt-32 grid grid-cols-1 items-center gap-12 md:mt-36 md:gap-16 lg:grid-cols-[0.95fr_1.05fr]">
+      <div id="gartenpflege" class="js-animate scroll-mt-32">
+        <p class="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-[#789873]">
+          Gartenpflege
+        </p>
+
+        <h3 class="text-[28px] font-semibold leading-tight tracking-[-0.035em] text-[#111a13] md:text-[36px]">
+          Professionelle Gartenpflege in Stuttgart & Umgebung.
+          <br />
+          Grün, das geliebt wird.
+        </h3>
+
+        <p class="mt-5 max-w-xl text-[14px] leading-7 text-[#4d594d] md:text-[18px] md:leading-8">
+          Wir übernehmen die professionelle Gartenpflege in Stuttgart und
+          Umgebung für Privatgärten, Wohnanlagen und Unternehmen. Ob
+          Rasenpflege, Heckenschnitt, Beetpflege oder saisonale Arbeiten –
+          wir sorgen dafür, dass Ihre Außenanlagen gepflegt und einladend
+          wirken.
+        </p>
+
+        <div class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 md:mt-6">
+          {gardenServices.map((service, index) => (
+            <ServiceCard
+              icon={service.icon}
+              title={service.title}
+              text={service.text}
+              index={index}
+            />
+          ))}
+        </div>
+
+        <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+          <a
+            href="/gartenpflege-stuttgart"
+            class="inline-flex rounded-full bg-[#789873] px-6 py-3 font-semibold text-white shadow-lg shadow-[#789873]/20 transition hover:bg-[#6f8d67]"
+          >
+            Mehr zur Gartenpflege
+          </a>
+
+          <a
+            href="/heckenschnitt-stuttgart"
+            class="inline-flex rounded-full border border-[#d8d2c4] px-6 py-3 font-semibold text-[#111a13] transition hover:bg-white"
+          >
+            Mehr zum Heckenschnitt
+          </a>
+        </div>
+      </div>
+
+      <div class="js-animate-img">
+        <ImageSlider images={gardenImages} height="md:h-[680px]" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .js-animate,
+  .js-animate-img {
+    opacity: 0;
+    transform: translateY(36px);
+    transition:
+      opacity 0.7s ease-out,
+      transform 0.7s ease-out;
+  }
+
+  .js-animate-img {
+    transform: scale(0.97);
+    transition:
+      opacity 0.8s ease-out,
+      transform 0.8s ease-out;
+  }
+
+  .js-animate.is-visible,
+  .js-animate-img.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+</style>
+
+<script>
+  function initScrollAnimations() {
+    const targets = document.querySelectorAll(".js-animate, .js-animate-img");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.35 }
+    );
+
+    targets.forEach((target) => observer.observe(target));
+  }
+
+  document.addEventListener("astro:page-load", initScrollAnimations);
+  initScrollAnimations();
+</script>

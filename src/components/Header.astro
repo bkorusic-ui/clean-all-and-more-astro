@@ -1,0 +1,298 @@
+---
+// Header.astro
+// 1:1-Portierung von Header.tsx (React) nach Astro.
+// - useState -> reines DOM/JS im <script>-Block
+// - react-router-dom Link/navigate -> normale <a>-Tags + Hash-Navigation
+// - lucide-react Icons (Menu, X, Phone, ChevronRight) -> Inline-SVGs (identische Pfade)
+//
+// Struktur "Leistungen":
+//   Leistungen (Klick/Hover)
+//     -> Hausmeisterservice (Klick scrollt zur Sektion) -> Untermenü:
+//          - Hausmeisterservice (scrollt zur Sektion auf der Startseite)
+//          - Gebäudereinigung (eigene Unterseite)
+//          - Objektbetreuung (eigene Unterseite)
+//     -> Gartenpflege (Klick scrollt zur Sektion) -> Untermenü:
+//          - Gartenpflege (scrollt zur Sektion auf der Startseite)
+//          - Gartenpflege - Stuttgart (eigene Unterseite)
+//          - Heckenschnitt - Stuttgart (eigene Unterseite)
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 border-b border-[#e5dfd3]/80 bg-[#f8f6ef]/90">
+  <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 md:h-24 md:px-8">
+    <a href="/" class="flex items-center">
+      <img
+        src="/logo.png"
+        alt="Clean All and More"
+        class="h-14 w-auto md:h-20"
+      />
+    </a>
+
+    <nav class="hidden items-center gap-11 text-[17px] font-medium text-[#4d594d] md:flex">
+      <div class="group/leistungen relative">
+        <button
+          type="button"
+          data-scroll-to="leistungen"
+          class="transition hover:text-[#789873]"
+        >
+          Leistungen
+        </button>
+
+        <div class="invisible absolute left-1/2 top-full z-[9999] mt-7 w-64 -translate-x-1/2 rounded-3xl border border-[#e5dfd3] bg-[#f8f6ef] p-3 opacity-0 transition-all duration-300 group-hover/leistungen:visible group-hover/leistungen:translate-y-0 group-hover/leistungen:opacity-100">
+          <!-- Hausmeisterservice mit Untermenü -->
+          <div class="group/hms relative">
+            <button
+              type="button"
+              data-scroll-to="hausmeisterservice"
+              class="flex w-full items-center justify-between rounded-2xl px-5 py-3 text-left text-[15px] font-medium text-[#243424] transition-all duration-200 hover:bg-[#ede8db] hover:text-[#789873]"
+            >
+              <span>Hausmeisterservice</span>
+              <span class="text-[#789873]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </span>
+            </button>
+
+            <div class="invisible absolute left-full top-0 z-[9999] ml-2 w-64 rounded-3xl border border-[#e5dfd3] bg-[#f8f6ef] p-3 opacity-0 transition-all duration-300 group-hover/hms:visible group-hover/hms:opacity-100">
+              <button
+                type="button"
+                data-scroll-to="hausmeisterservice"
+                class="flex w-full items-center rounded-2xl px-5 py-3 text-left text-[15px] font-medium text-[#243424] transition-all duration-200 hover:bg-[#ede8db] hover:text-[#789873]"
+              >
+                Hausmeisterservice
+              </button>
+
+              <a
+                href="/gebaeudereinigung"
+                class="mt-2 flex w-full items-center rounded-2xl px-5 py-3 text-left text-[15px] font-medium text-[#243424] transition-all duration-200 hover:bg-[#ede8db] hover:text-[#789873]"
+              >
+                Gebäudereinigung
+              </a>
+
+              <a
+                href="/objektbetreuung"
+                class="mt-2 flex w-full items-center rounded-2xl px-5 py-3 text-left text-[15px] font-medium text-[#243424] transition-all duration-200 hover:bg-[#ede8db] hover:text-[#789873]"
+              >
+                Objektbetreuung
+              </a>
+            </div>
+          </div>
+
+          <!-- Gartenpflege mit Untermenü -->
+          <div class="group/gp relative mt-2">
+            <button
+              type="button"
+              data-scroll-to="gartenpflege"
+              class="flex w-full items-center justify-between rounded-2xl px-5 py-3 text-left text-[15px] font-medium text-[#243424] transition-all duration-200 hover:bg-[#ede8db] hover:text-[#789873]"
+            >
+              <span>Gartenpflege</span>
+              <span class="text-[#789873]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </span>
+            </button>
+
+            <div class="invisible absolute left-full top-0 z-[9999] ml-2 w-64 rounded-3xl border border-[#e5dfd3] bg-[#f8f6ef] p-3 opacity-0 transition-all duration-300 group-hover/gp:visible group-hover/gp:opacity-100">
+              <button
+                type="button"
+                data-scroll-to="gartenpflege"
+                class="flex w-full items-center rounded-2xl px-5 py-3 text-left text-[15px] font-medium text-[#243424] transition-all duration-200 hover:bg-[#ede8db] hover:text-[#789873]"
+              >
+                Gartenpflege
+              </button>
+
+              <a
+                href="/gartenpflege-stuttgart"
+                class="mt-2 flex w-full items-center rounded-2xl px-5 py-3 text-left text-[15px] font-medium text-[#243424] transition-all duration-200 hover:bg-[#ede8db] hover:text-[#789873]"
+              >
+                Gartenpflege - Stuttgart
+              </a>
+
+              <a
+                href="/heckenschnitt-stuttgart"
+                class="mt-2 flex w-full items-center rounded-2xl px-5 py-3 text-left text-[15px] font-medium text-[#243424] transition-all duration-200 hover:bg-[#ede8db] hover:text-[#789873]"
+              >
+                Heckenschnitt - Stuttgart
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" data-scroll-to="ueber-uns" class="transition hover:text-[#789873]">
+        Über uns
+      </button>
+
+      <button type="button" data-scroll-to="ablauf" class="transition hover:text-[#789873]">
+        Ablauf
+      </button>
+
+      <button type="button" data-scroll-to="kontakt" class="transition hover:text-[#789873]">
+        Kontakt
+      </button>
+
+      <a href="/referenzen" class="transition hover:text-[#789873]">
+        Referenzen
+      </a>
+    </nav>
+
+    <a
+      href="tel:01727306716"
+      class="hidden items-center gap-2 rounded-full bg-[#789873] px-7 py-3 text-[17px] font-semibold text-white shadow-lg shadow-[#789873]/20 transition hover:bg-[#6b8b67] md:flex"
+    >
+      <!-- Phone icon (lucide) -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" />
+      </svg>
+      <span>Anrufen</span>
+    </a>
+
+    <button
+      type="button"
+      id="menu-toggle"
+      aria-label="Menü öffnen"
+      aria-expanded="false"
+      aria-controls="mobile-navigation"
+      class="flex h-11 w-11 items-center justify-center rounded-full border border-[#d8d2c4] bg-white/50 text-[#111a13] md:hidden"
+    >
+      <!-- Menu icon (lucide) -->
+      <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M4 12h16" />
+        <path d="M4 18h16" />
+        <path d="M4 6h16" />
+      </svg>
+      <!-- X icon (lucide) -->
+      <svg id="icon-close" class="hidden" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M18 6 6 18" />
+        <path d="m6 6 12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <div
+    id="mobile-navigation"
+    class="hidden border-t border-[#e5dfd3] bg-[#f8f6ef] px-5 py-6 md:hidden"
+  >
+    <nav class="flex flex-col gap-5 text-[18px] font-medium text-[#4d594d]">
+      <button type="button" data-scroll-to="leistungen" class="text-left">
+        Leistungen
+      </button>
+
+      <div class="ml-4 flex flex-col gap-4 border-l border-[#d8d2c4] pl-4 text-[16px] text-[#6b756b]">
+        <div class="flex flex-col gap-2">
+          <button type="button" data-scroll-to="hausmeisterservice" class="text-left font-semibold text-[#4d594d]">
+            Hausmeisterservice
+          </button>
+
+          <a href="/gebaeudereinigung" class="text-left">
+            Gebäudereinigung
+          </a>
+
+          <a href="/objektbetreuung" class="text-left">
+            Objektbetreuung
+          </a>
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <button type="button" data-scroll-to="gartenpflege" class="text-left font-semibold text-[#4d594d]">
+            Gartenpflege
+          </button>
+
+          <a href="/gartenpflege-stuttgart" class="text-left">
+            Gartenpflege - Stuttgart
+          </a>
+
+          <a href="/heckenschnitt-stuttgart" class="text-left">
+            Heckenschnitt - Stuttgart
+          </a>
+        </div>
+      </div>
+
+      <button type="button" data-scroll-to="ueber-uns" class="text-left">
+        Über uns
+      </button>
+
+      <button type="button" data-scroll-to="ablauf" class="text-left">
+        Ablauf
+      </button>
+
+      <button type="button" data-scroll-to="kontakt" class="text-left">
+        Kontakt
+      </button>
+
+      <a href="/referenzen" class="mobile-nav-link">
+        Referenzen
+      </a>
+    </nav>
+
+    <a
+      href="tel:01727306716"
+      class="mt-6 flex items-center justify-center gap-2 rounded-full bg-[#789873] px-6 py-3.5 text-[16px] font-semibold text-white"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" />
+      </svg>
+      Anrufen
+    </a>
+  </div>
+</header>
+
+<script>
+  // Entspricht dem useState(open)-Verhalten aus der React-Version
+  const toggleBtn = document.getElementById("menu-toggle");
+  const mobileNav = document.getElementById("mobile-navigation");
+  const iconMenu = document.getElementById("icon-menu");
+  const iconClose = document.getElementById("icon-close");
+
+  function setOpen(open: boolean) {
+    if (!toggleBtn || !mobileNav || !iconMenu || !iconClose) return;
+    mobileNav.classList.toggle("hidden", !open);
+    iconMenu.classList.toggle("hidden", open);
+    iconClose.classList.toggle("hidden", !open);
+    toggleBtn.setAttribute("aria-expanded", String(open));
+    toggleBtn.setAttribute("aria-label", open ? "Menü schließen" : "Menü öffnen");
+  }
+
+  toggleBtn?.addEventListener("click", () => {
+    const isOpen = !mobileNav?.classList.contains("hidden");
+    setOpen(!isOpen);
+  });
+
+  // Mobiles Menü schließen, sobald ein echter Link (Unterseite) angetippt wird
+  document.querySelectorAll("#mobile-navigation a").forEach((link) => {
+    link.addEventListener("click", () => setOpen(false));
+  });
+
+  // Entspricht goToSection(id) aus der React-Version:
+  // navigiert zur Startseite und scrollt danach zur passenden Sektion.
+  function goToSection(id: string) {
+    setOpen(false);
+
+    if (window.location.pathname === "/") {
+      const el = document.getElementById(id);
+      el?.scrollIntoView({ behavior: "smooth" });
+      history.replaceState(null, "", `/#${id}`);
+    } else {
+      window.location.href = `/#${id}`;
+    }
+  }
+
+  document.querySelectorAll<HTMLButtonElement>("[data-scroll-to]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const id = btn.dataset.scrollTo;
+      if (id) goToSection(id);
+    });
+  });
+
+  // Beim Laden der Startseite mit Hash direkt zur Sektion scrollen
+  // (entspricht dem "time: Date.now()"-State, der auf der Zielseite ausgewertet wird)
+  if (window.location.pathname === "/" && window.location.hash) {
+    const id = window.location.hash.slice(1);
+    requestAnimationFrame(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    });
+  }
+</script>

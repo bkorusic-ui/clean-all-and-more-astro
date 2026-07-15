@@ -1,0 +1,155 @@
+---
+const values = [
+  "Fester Ansprechpartner",
+  "Klare Absprachen",
+  "Transparente Preise",
+];
+
+const stats = [
+  ["10+", "Jahre Erfahrung"],
+  ["24h", "Rückmeldung"],
+  ["100%", "Verlässlich"],
+];
+---
+
+<section class="bg-[#eef2e8] px-5 py-16 md:px-8 md:py-24">
+  <div
+    id="ueber-uns"
+    class="mx-auto grid max-w-7xl scroll-mt-24 grid-cols-1 items-start gap-12 md:gap-20 lg:grid-cols-[0.95fr_1.05fr]"
+  >
+    <!-- Linke Seite -->
+    <div>
+      <p class="mb-5 text-[11px] font-semibold uppercase tracking-[0.35em] text-[#789873] md:text-xs">
+        Über uns
+      </p>
+
+      <h2 class="text-[42px] font-semibold leading-[0.98] tracking-[-0.05em] text-[#111a13] md:text-[64px]">
+        Persönlich.
+        <br />
+        Gründlich.
+        <br />
+        <span class="text-[#789873]">Fair.</span>
+      </h2>
+
+      <p class="mt-8 max-w-xl text-[19px] font-semibold leading-8 text-[#111a13] md:mt-10 md:text-[22px]">
+        cleanallandmore steht für ehrliche Handwerksarbeit
+        <br class="hidden md:block" />
+        in und um Stuttgart.
+      </p>
+
+      <div class="mt-7 max-w-xl space-y-5 text-[15px] leading-7 text-[#4d594d] md:text-[17px] md:leading-8">
+        <p>
+          Wir kümmern uns um Immobilien, Gärten und Außenanlagen mit
+          derselben Sorgfalt, als wären sie unsere eigenen.
+        </p>
+
+        <p>
+          Ob Hausverwaltung, Eigentümergemeinschaft oder Privathaushalt:
+          Sie erhalten zuverlässige Ausführung, klare Kommunikation und
+          einen festen Ansprechpartner.
+        </p>
+
+        <p>
+          Als regionaler Dienstleister für Hausmeisterservice und
+          Gartenpflege in Stuttgart betreuen wir Wohnanlagen,
+          Mehrfamilienhäuser, private Grundstücke und gewerbliche Objekte
+          mit viel Sorgfalt und einem klaren Blick fürs Detail.
+        </p>
+
+        <p>
+          Unser Ziel ist, dass Ihr Gebäude und Ihre Außenanlagen dauerhaft
+          gepflegt, sauber und einladend wirken – ohne komplizierte Abläufe
+          und ohne lange Kommunikationswege.
+        </p>
+      </div>
+
+      <div class="mt-8 space-y-3">
+        {
+          values.map((value) => (
+            <div class="flex items-center gap-3 text-[#111a13]">
+              <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                class="h-5 w-5 shrink-0 text-[#789873]"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                <path d="m9 11 3 3L22 4" />
+              </svg>
+
+              <span class="text-[15px] font-medium md:text-[16px]">
+                {value}
+              </span>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="mt-9 grid grid-cols-3 gap-4">
+        {
+          stats.map(([number, label]) => (
+            <div class="rounded-[16px] border border-[#d9d2c5] bg-[#fbf8f0]/80 px-4 py-5 text-center shadow-sm md:rounded-[18px]">
+              <p class="text-[28px] font-semibold tracking-[-0.04em] text-[#111a13] md:text-[36px]">
+                {number}
+              </p>
+
+              <p class="mt-2 text-[12px] leading-5 text-[#556055] md:text-sm">
+                {label}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Rechte Seite -->
+    <div>
+      <div class="relative">
+        <div class="absolute -inset-4 rounded-[34px] bg-[#789873]/10 blur-2xl md:-inset-5"></div>
+
+        <img
+          src="/about.webp"
+          alt="Clean all and more bei der Objekt- und Gartenpflege in Stuttgart"
+          class="relative mt-6 h-[420px] w-full rounded-[24px] border border-[#d9d2c5] object-cover shadow-xl shadow-black/10 md:mt-10 md:h-[680px] md:rounded-[28px]"
+        />
+      </div>
+
+      <!-- Box unter dem Bild -->
+      <div class="mt-8 rounded-[24px] border border-[#d9d2c5] bg-[#fbf8f0]/80 px-6 py-7 shadow-sm backdrop-blur-md md:rounded-[28px] md:px-8 md:py-8">
+        <div class="flex items-center justify-between gap-6">
+          <div>
+            <p class="text-[11px] font-semibold uppercase tracking-[0.35em] text-[#789873] md:text-xs">
+              Regional
+            </p>
+
+            <p class="mt-4 text-[24px] font-semibold tracking-[-0.03em] text-[#111a13] md:text-[30px]">
+              Stuttgart , Ludwigsburg &amp; Umgebung
+            </p>
+
+            <p class="mt-4 text-[14px] leading-7 text-[#556055] md:text-[16px]">
+              Persönlich vor Ort – mit kurzen Wegen und klaren Absprachen.
+            </p>
+          </div>
+
+          <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            class="hidden h-[78px] w-[78px] shrink-0 text-[#789873] md:block"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,169 @@
+---
+const STORAGE_KEY = "cookie-consent";
+const GA_ID = "G-27XCZN8GEH";
+---
+
+<div
+  id="cookie-banner"
+  class="fixed inset-x-4 bottom-5 z-[999999] mx-auto hidden max-w-4xl rounded-[28px] border border-[#d9d2c5] bg-[#fbf8f0] p-5 shadow-2xl md:p-6"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="cookie-banner-title"
+  aria-describedby="cookie-banner-description"
+>
+  <div class="grid gap-5 md:grid-cols-[1fr_auto] md:items-center">
+    <div>
+      <div
+        class="mb-3 inline-flex rounded-full bg-[#e5eee1] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#789873]"
+      >
+        Datenschutz
+      </div>
+
+      <h2
+        id="cookie-banner-title"
+        class="text-[20px] font-semibold tracking-[-0.03em] text-[#111a13]"
+      >
+        Cookies &amp; Analyse
+      </h2>
+
+      <p
+        id="cookie-banner-description"
+        class="mt-2 max-w-2xl text-[14px] leading-6 text-[#556055]"
+      >
+        Wir verwenden Cookies und Google Analytics, um unsere Website
+        kontinuierlich zu verbessern. Google Analytics wird ausschließlich
+        nach Ihrer Zustimmung aktiviert.
+      </p>
+    </div>
+
+    <div class="flex flex-col gap-2 sm:flex-row md:flex-col">
+      <button
+        id="accept-cookies"
+        type="button"
+        class="rounded-full bg-[#789873] px-6 py-3 text-[14px] font-semibold text-white shadow-lg shadow-[#789873]/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#6f8d67]"
+      >
+        Akzeptieren
+      </button>
+
+      <button
+        id="reject-cookies"
+        type="button"
+        class="rounded-full border border-[#d9d2c5] bg-white px-6 py-3 text-[14px] font-semibold text-[#556055] transition-all duration-300 hover:bg-[#f4f1e8]"
+      >
+        Nicht Akzeptieren
+      </button>
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ STORAGE_KEY, GA_ID }}>
+  const banner = document.querySelector("#cookie-banner");
+  const acceptButton = document.querySelector("#accept-cookies");
+  const rejectButton = document.querySelector("#reject-cookies");
+
+  function showBanner() {
+    if (!(banner instanceof HTMLElement)) return;
+
+    banner.classList.remove("hidden");
+
+    window.requestAnimationFrame(() => {
+      banner.classList.add("cookie-banner-visible");
+    });
+
+    if (acceptButton instanceof HTMLButtonElement) {
+      acceptButton.focus();
+    }
+  }
+
+  function hideBanner() {
+    if (!(banner instanceof HTMLElement)) return;
+
+    banner.classList.remove("cookie-banner-visible");
+
+    window.setTimeout(() => {
+      banner.classList.add("hidden");
+    }, 250);
+  }
+
+  function loadAnalytics() {
+    if (document.getElementById("ga-script")) return;
+
+    window.dataLayer = window.dataLayer || [];
+
+    window.gtag = function (...args) {
+      window.dataLayer.push(args);
+    };
+
+    const script = document.createElement("script");
+
+    script.id = "ga-script";
+    script.async = true;
+    script.src =
+      "https://www.googletagmanager.com/gtag/js?id=" +
+      encodeURIComponent(GA_ID);
+
+    document.head.appendChild(script);
+
+    script.addEventListener("load", () => {
+      window.gtag("js", new Date());
+
+      window.gtag("config", GA_ID, {
+        anonymize_ip: true,
+      });
+    });
+  }
+
+  function acceptCookies() {
+    localStorage.setItem(STORAGE_KEY, "accepted");
+    loadAnalytics();
+    hideBanner();
+  }
+
+  function rejectCookies() {
+    localStorage.setItem(STORAGE_KEY, "rejected");
+    hideBanner();
+  }
+
+  const consent = localStorage.getItem(STORAGE_KEY);
+
+  if (!consent) {
+    showBanner();
+  }
+
+  if (consent === "accepted") {
+    loadAnalytics();
+  }
+
+  acceptButton?.addEventListener("click", acceptCookies);
+  rejectButton?.addEventListener("click", rejectCookies);
+
+  window.addEventListener("open-cookie-settings", showBanner);
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      hideBanner();
+    }
+  });
+</script>
+
+<style>
+  #cookie-banner {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 250ms ease,
+      transform 250ms ease;
+  }
+
+  #cookie-banner.cookie-banner-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #cookie-banner {
+      transition: none;
+      transform: none;
+    }
+  }
+</style>

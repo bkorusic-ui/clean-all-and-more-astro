@@ -1,0 +1,317 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Contact from "../components/Contact.astro";
+import References from "../components/References.tsx";
+import RelatedServices from "../components/RelatedServices.astro";
+
+const services = [
+  "Regelmäßige Rasenpflege inklusive Mähen und Vertikutieren",
+  "Beet- und Pflanzpflege für gepflegte Grünflächen",
+  "Form- und Rückschnitt von Sträuchern und Gehölzen",
+  "Frühjahrsputz: Startklar machen des Gartens nach dem Winter",
+  "Herbstputz: Laubentfernung und Vorbereitung auf die kalte Jahreszeit",
+  "Unkrautentfernung und Pflege von Wegen und Randflächen",
+  "Düngen und Bewässerung nach saisonalem Bedarf",
+  "Saisonale Pflege für Privatgärten, Wohnanlagen und Gewerbeobjekte",
+];
+
+const benefits = [
+  "Gepflegter Garten das ganze Jahr über",
+  "Fachgerechte Pflege abgestimmt auf die Jahreszeit",
+  "Ordentliches Erscheinungsbild Ihrer Außenanlage",
+  "Ideal für Privatkunden, Unternehmen und Hausverwaltungen",
+  "Zuverlässige Termine nach Absprache",
+  "Auf Wunsch inklusive Grünschnitt-Entsorgung",
+];
+
+const steps = [
+  ["1", "Anfrage senden", "Sie kontaktieren uns per Formular, Telefon oder WhatsApp."],
+  ["2", "Garten & Bedarf klären", "Wir besprechen Größe, Zustand und gewünschte Pflegeleistungen."],
+  ["3", "Angebot erhalten", "Sie bekommen ein individuelles Angebot für Ihre Gartenpflege."],
+  ["4", "Pflege starten", "Wir kümmern uns zuverlässig und saisonal passend um Ihren Garten."],
+];
+
+const faqs = [
+  [
+    "Welche Leistungen gehören zur Gartenpflege?",
+    "Unsere Gartenpflege umfasst Rasenpflege, Beet- und Pflanzpflege, Form- und Rückschnitt sowie Frühjahrs- und Herbstputz für einen gepflegten Garten das ganze Jahr über.",
+  ],
+  [
+    "Wann ist der beste Zeitpunkt für Form- und Rückschnitte?",
+    "Form- und Rückschnitte sind je nach Pflanzenart im Frühjahr oder Herbst sinnvoll. Wir beraten Sie gern, welcher Zeitpunkt zu Ihren Sträuchern und Gehölzen passt.",
+  ],
+  [
+    "Übernehmen Sie auch den Frühjahrs- und Herbstputz?",
+    "Ja. Wir bereiten Ihren Garten im Frühjahr auf die Saison vor und übernehmen im Herbst Laubentfernung sowie die Vorbereitung auf den Winter.",
+  ],
+  [
+    "Arbeiten Sie auch für Hausverwaltungen und Unternehmen?",
+    "Ja. Wir übernehmen Gartenpflege für Wohnanlagen, Außenbereiche, Gewerbeobjekte und Unternehmen in Stuttgart und Umgebung.",
+  ],
+];
+
+const whyPoints = [
+  [
+    "Saisonale Pflege",
+    "Frühjahrsputz, Sommerpflege und Herbstputz sorgen dafür, dass Ihr Garten das ganze Jahr über gepflegt aussieht.",
+  ],
+  [
+    "Gesundes Wachstum",
+    "Fachgerechte Form- und Rückschnitte fördern kräftige Pflanzen und dichte Hecken.",
+  ],
+  [
+    "Gepflegtes Erscheinungsbild",
+    "Ein ordentlicher Garten verbessert den ersten Eindruck Ihrer Immobilie und Außenanlage.",
+  ],
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map(([question, answer]) => ({
+    "@type": "Question",
+    name: question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: answer,
+    },
+  })),
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  serviceType: "Gartenpflege",
+  name: "Gartenpflege Stuttgart",
+  description:
+    "Professionelle Gartenpflege für Privatgärten, Wohnanlagen und Gewerbe. Rasenpflege, Form- und Rückschnitte sowie Frühjahrs- und Herbstputz in Stuttgart, Ludwigsburg und Umgebung.",
+  url: "https://www.cleanallandmore.de/gartenpflege-stuttgart",
+  provider: {
+    "@type": "LocalBusiness",
+    "@id": "https://www.cleanallandmore.de/#unternehmen",
+    name: "Clean all and more",
+  },
+  areaServed: [
+    { "@type": "City", name: "Stuttgart" },
+    { "@type": "City", name: "Ludwigsburg" },
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Leistungen in der Gartenpflege",
+    itemListElement: services.map((item) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: item,
+      },
+    })),
+  },
+};
+---
+
+<BaseLayout
+  title="Gartenpflege | Clean all and more"
+  description="Professionelle Gartenpflege für Privatgärten, Wohnanlagen und Gewerbe. Rasenpflege, Form- und Rückschnitte sowie Frühjahrs- und Herbstputz in Stuttgart, Ludwigsburg und Umgebung."
+  canonical="https://www.cleanallandmore.de/gartenpflege-stuttgart"
+>
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify(serviceSchema)}
+  ></script>
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify(faqSchema)}
+  ></script>
+
+  <main class="bg-[#f8f6ee] text-[#111a13]">
+    <!-- Hero -->
+    <section class="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-5 py-24 md:grid-cols-2 md:px-8 md:py-32">
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-[0.22em] text-[#789873]">
+          Gartenpflege Stuttgart
+        </p>
+
+        <h1 class="mt-5 text-4xl font-semibold leading-[1.05] tracking-[-0.04em] md:text-6xl">
+          Professionelle Gartenpflege in Stuttgart
+        </h1>
+
+        <p class="mt-6 max-w-2xl text-lg leading-8 text-[#556055] md:text-xl md:leading-9">
+          Clean all and more übernimmt die zuverlässige Pflege Ihres Gartens
+          – von Rasenpflege über Form- und Rückschnitte bis zu Frühjahrs- und
+          Herbstputz. Für Privatgärten, Wohnanlagen und Gewerbeobjekte in
+          Stuttgart und Umgebung.
+        </p>
+
+        <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+          <a
+            href="#kontakt"
+            class="rounded-full bg-[#789873] px-7 py-4 text-center font-semibold text-white shadow-lg shadow-[#789873]/20 transition hover:bg-[#6f8d67]"
+          >
+            Kostenloses Angebot anfragen
+          </a>
+
+          <a
+            href="/#leistungen"
+            class="rounded-full border border-[#d8d2c4] px-7 py-4 text-center font-semibold transition hover:bg-white"
+          >
+            Leistungen ansehen
+          </a>
+        </div>
+      </div>
+
+      <div class="overflow-hidden rounded-[32px] shadow-2xl shadow-black/10">
+        <img
+          src="/images/garden/gartenpflege-rasen-hecke2.webp"
+          alt="Professionelle Gartenpflege und Rasenpflege in Stuttgart"
+          width="720"
+          height="520"
+          loading="eager"
+          decoding="async"
+          class="h-[320px] w-full object-cover md:h-[520px]"
+        />
+      </div>
+    </section>
+
+    <!-- Einleitung -->
+    <section class="mx-auto max-w-5xl px-5 pb-20 md:px-8">
+      <h2 class="text-3xl font-semibold tracking-[-0.03em] md:text-4xl">
+        Gartenpflege, die zu jeder Jahreszeit passt
+      </h2>
+
+      <p class="mt-5 text-lg leading-8 text-[#556055]">
+        Ein gepflegter Garten braucht das ganze Jahr über Aufmerksamkeit.
+        Unsere Gartenpflege in Stuttgart umfasst Rasenpflege, Beet- und
+        Pflanzpflege sowie Form- und Rückschnitte im Frühjahr und Herbst –
+        damit Ihr Garten dauerhaft gepflegt und gesund bleibt.
+      </p>
+
+      <p class="mt-4 text-lg leading-8 text-[#556055]">
+        Ob Privatgarten, Wohnanlage oder Gewerbeobjekt: Wir arbeiten
+        zuverlässig, sorgfältig und passend zum Zustand und zur Saison Ihrer
+        Grünflächen.
+      </p>
+    </section>
+
+    <!-- Warum -->
+    <section class="bg-white/45 py-20">
+      <div class="mx-auto max-w-6xl px-5 md:px-8">
+        <h2 class="text-3xl font-semibold tracking-[-0.03em] md:text-4xl">
+          Warum regelmäßige Gartenpflege wichtig ist
+        </h2>
+
+        <div class="mt-8 grid gap-5 md:grid-cols-3">
+          {
+            whyPoints.map(([title, text]) => (
+              <div class="rounded-3xl border border-[#d8d2c4] bg-[#f8f6ee] p-7">
+                <h3 class="text-xl font-semibold">{title}</h3>
+                <p class="mt-3 leading-7 text-[#556055]">{text}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Leistungen -->
+    <section class="mx-auto max-w-6xl px-5 py-20 md:px-8">
+      <h2 class="text-3xl font-semibold tracking-[-0.03em] md:text-4xl">
+        Unsere Leistungen in der Gartenpflege
+      </h2>
+
+      <div class="mt-8 grid gap-5 md:grid-cols-2">
+        {
+          services.map((item) => (
+            <div class="rounded-3xl border border-[#d8d2c4] bg-white/45 p-6 text-[#556055]">
+              {item}
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Vorteile -->
+    <section class="bg-[#111a13] py-20 text-white">
+      <div class="mx-auto max-w-6xl px-5 md:px-8">
+        <h2 class="text-3xl font-semibold tracking-[-0.03em] md:text-4xl">
+          Ihre Vorteile auf einen Blick
+        </h2>
+
+        <div class="mt-8 grid gap-4 md:grid-cols-3">
+          {
+            benefits.map((benefit) => (
+              <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+                {benefit}
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- So arbeiten wir -->
+    <section class="mx-auto max-w-6xl px-5 py-20 md:px-8">
+      <h2 class="text-3xl font-semibold tracking-[-0.03em] md:text-4xl">
+        So arbeiten wir
+      </h2>
+
+      <div class="mt-8 grid gap-5 md:grid-cols-4">
+        {
+          steps.map(([number, title, text]) => (
+            <div class="rounded-3xl border border-[#d8d2c4] bg-white/45 p-6">
+              <div class="flex h-10 w-10 items-center justify-center rounded-full bg-[#789873] font-bold text-white">
+                {number}
+              </div>
+              <h3 class="mt-5 text-lg font-semibold">{title}</h3>
+              <p class="mt-3 text-sm leading-7 text-[#556055]">{text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Einsatzgebiet -->
+    <section class="bg-white/45 py-20">
+      <div class="mx-auto max-w-5xl px-5 md:px-8">
+        <h2 class="text-3xl font-semibold tracking-[-0.03em] md:text-4xl">
+          Gartenpflege in Stuttgart und Umgebung
+        </h2>
+
+        <p class="mt-5 text-lg leading-8 text-[#556055]">
+          Wir übernehmen Gartenpflege in Stuttgart und Umgebung für
+          Privatgärten, Wohnanlagen, Gewerbeobjekte und Außenanlagen.
+        </p>
+
+        <p class="mt-4 text-lg leading-8 text-[#556055]">
+          Besonders gefragt ist unsere Gartenpflege bei Kunden, die Wert auf
+          einen gepflegten Garten in jeder Jahreszeit legen – vom
+          Frühjahrsputz bis zum Herbstputz.
+        </p>
+      </div>
+    </section>
+
+    <!-- Referenzen -->
+    <References client:load />
+
+    <!-- FAQ -->
+    <section class="mx-auto max-w-5xl px-5 py-20 md:px-8">
+      <h2 class="text-3xl font-semibold tracking-[-0.03em] md:text-4xl">
+        Häufige Fragen zur Gartenpflege
+      </h2>
+
+      <div class="mt-8 space-y-5">
+        {
+          faqs.map(([question, answer]) => (
+            <div class="rounded-3xl border border-[#d8d2c4] bg-white/45 p-6">
+              <h3 class="text-xl font-semibold">{question}</h3>
+              <p class="mt-3 leading-7 text-[#556055]">{answer}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Kontakt -->
+    <RelatedServices current="/gartenpflege-stuttgart" />
+    <Contact />
+  </main>
+</BaseLayout>

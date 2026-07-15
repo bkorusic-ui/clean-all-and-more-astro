@@ -1,0 +1,137 @@
+---
+import { ChevronLeft, ChevronRight } from "lucide-astro";
+
+interface Props {
+  images: { src: string; alt: string }[];
+  height?: string;
+}
+const { images, height = "md:h-[700px]" } = Astro.props;
+---
+<div
+  class="js-slider group relative overflow-hidden rounded-[26px] border border-[#d9d2c5] shadow-xl shadow-black/5 md:rounded-[30px]"
+  data-images={JSON.stringify(images)}
+  data-interval="4500"
+>
+  <img
+    src={images[0].src}
+    alt={images[0].alt}
+    width="720"
+    height="700"
+    loading="lazy"
+    decoding="async"
+    class={`js-slide-img h-[320px] w-full object-cover object-top transition-all duration-[1800ms] ease-in-out hover:scale-[1.015] ${height}`}
+  />
+
+  <div class="js-dots absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
+    {images.map((_, index) => (
+      <span
+        class={`h-2 rounded-full transition-all duration-500 ${
+          index === 0 ? "w-7 bg-white/90" : "w-2 bg-white/45"
+        }`}
+      />
+    ))}
+  </div>
+
+  <button
+    type="button"
+    aria-label="Vorheriges Bild"
+    class="js-prev absolute bottom-4 left-4 hidden h-9 w-9 items-center justify-center rounded-full bg-white/70 text-[#111a13] opacity-0 shadow-md backdrop-blur-sm transition-all duration-300 hover:bg-white group-hover:opacity-100 md:flex"
+  >
+    <ChevronLeft class="h-5 w-5" />
+  </button>
+
+  <button
+    type="button"
+    aria-label="Nächstes Bild"
+    class="js-next absolute bottom-4 right-4 hidden h-9 w-9 items-center justify-center rounded-full bg-white/70 text-[#111a13] opacity-0 shadow-md backdrop-blur-sm transition-all duration-300 hover:bg-white group-hover:opacity-100 md:flex"
+  >
+    <ChevronRight class="h-5 w-5" />
+  </button>
+</div>
+
+<script>
+  function initSliders() {
+    const sliders = document.querySelectorAll<HTMLElement>(".js-slider");
+    sliders.forEach((slider) => {
+      if (slider.dataset.initialized === "true") return;
+      slider.dataset.initialized = "true";
+      const images: { src: string; alt: string }[] = JSON.parse(
+        slider.dataset.images || "[]"
+      );
+      const intervalMs = Number(slider.dataset.interval || 4500);
+      const img = slider.querySelector<HTMLImageElement>(".js-slide-img");
+      const dots = slider.querySelectorAll<HTMLElement>(".js-dots span");
+      const prevBtn = slider.querySelector<HTMLButtonElement>(".js-prev");
+      const nextBtn = slider.querySelector<HTMLButtonElement>(".js-next");
+      if (!img || images.length === 0) return;
+      let activeImage = 0;
+      let paused = false;
+      let touchStartX: number | null = null;
+      let timer: ReturnType<typeof setInterval> | null = null;
+
+      const render = () => {
+        img.src = images[activeImage].src;
+        img.alt = images[activeImage].alt;
+        dots.forEach((dot, index) => {
+          dot.className =
+            index === activeImage
+              ? "h-2 rounded-full transition-all duration-500 w-7 bg-white/90"
+              : "h-2 rounded-full transition-all duration-500 w-2 bg-white/45";
+        });
+      };
+
+      const next = () => {
+        activeImage = (activeImage + 1) % images.length;
+        render();
+      };
+      const prev = () => {
+        activeImage = activeImage === 0 ? images.length - 1 : activeImage - 1;
+        render();
+      };
+
+      const startTimer = () => {
+        if (timer) clearInterval(timer);
+        timer = setInterval(() => {
+          if (!paused) next();
+        }, intervalMs);
+      };
+
+      const restartTimer = () => {
+        startTimer();
+      };
+
+      slider.addEventListener("mouseenter", () => (paused = true));
+      slider.addEventListener("mouseleave", () => (paused = false));
+
+      slider.addEventListener("touchstart", (e) => {
+        touchStartX = e.touches[0].clientX;
+      });
+      slider.addEventListener("touchend", (e) => {
+        if (touchStartX === null) return;
+        const distance = touchStartX - e.changedTouches[0].clientX;
+        if (distance > 50) {
+          next();
+          restartTimer();
+        }
+        if (distance < -50) {
+          prev();
+          restartTimer();
+        }
+        touchStartX = null;
+      });
+
+      prevBtn?.addEventListener("click", () => {
+        prev();
+        restartTimer();
+      });
+      nextBtn?.addEventListener("click", () => {
+        next();
+        restartTimer();
+      });
+
+      startTimer();
+    });
+  }
+  document.addEventListener("astro:page-load", initSliders);
+  initSliders();
+</script>

@@ -1,0 +1,302 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Contact from "../components/Contact.astro";
+import References from "../components/References.tsx";
+import RelatedServices from "../components/RelatedServices.astro";
+
+const services = [
+  "Regelmäßige Kontrollgänge und Objektbegehungen",
+  "Koordination von Hausmeisterservice, Reinigung und Gartenpflege",
+  "Fester Ansprechpartner für Eigentümer, Mieter und Hausverwaltungen",
+  "Überwachung von Sauberkeit und Ordnung im gesamten Objekt",
+  "Organisation von Kleinreparaturen und Instandhaltungsmaßnahmen",
+  "Müllmanagement und Kontrolle der Entsorgungsflächen",
+  "Koordination externer Dienstleister nach Bedarf",
+  "Individuelle Betreuungskonzepte für Ihr Objekt",
+];
+
+const benefits = [
+  "Alles aus einer Hand",
+  "Ein fester Ansprechpartner für Ihr gesamtes Objekt",
+  "Regelmäßige Kontrolle und Dokumentation",
+  "Weniger Koordinationsaufwand für Eigentümer und Verwaltungen",
+  "Zuverlässige und flexible Betreuung",
+  "Ideal für Wohnanlagen, Gewerbeobjekte und Mehrfamilienhäuser",
+];
+
+const steps = [
+  ["1", "Anfrage senden", "Sie kontaktieren uns per Formular, Telefon oder WhatsApp."],
+  ["2", "Objekt & Bedarf klären", "Wir besprechen den Umfang der gewünschten Objektbetreuung."],
+  ["3", "Angebot erhalten", "Sie bekommen ein individuelles Angebot passend zu Ihrem Objekt."],
+  ["4", "Betreuung starten", "Wir übernehmen die laufende Betreuung zuverlässig und koordiniert."],
+];
+
+const faqs = [
+  [
+    "Was umfasst die Objektbetreuung von Clean all and more?",
+    "Unsere Objektbetreuung bündelt Hausmeisterservice, Reinigung, Gartenpflege und regelmäßige Kontrollgänge zu einem koordinierten Rundum-Service für Ihr Objekt.",
+  ],
+  [
+    "Für wen eignet sich die Objektbetreuung?",
+    "Die Objektbetreuung eignet sich besonders für Hausverwaltungen, Eigentümergemeinschaften und Unternehmen, die eine zentrale Betreuung ohne mehrere Ansprechpartner wünschen.",
+  ],
+  [
+    "Habe ich einen festen Ansprechpartner?",
+    "Ja. Sie erhalten einen persönlichen Ansprechpartner, der die Koordination aller Aufgaben rund um Ihr Objekt übernimmt.",
+  ],
+  [
+    "Kann ich ein kostenloses Angebot erhalten?",
+    "Ja. Sie können uns unverbindlich kontaktieren und erhalten ein individuelles Angebot passend zu Ihrem Objekt und dem gewünschten Betreuungsumfang.",
+  ],
+];
+
+const whyPoints = [
+  [
+    "Zentrale Koordination",
+    "Statt mehrerer Ansprechpartner erhalten Sie eine gebündelte Betreuung aus einer Hand.",
+  ],
+  [
+    "Regelmäßige Kontrolle",
+    "Wiederkehrende Objektbegehungen sorgen dafür, dass Probleme frühzeitig erkannt werden.",
+  ],
+  [
+    "Weniger Aufwand",
+    "Wir übernehmen die Organisation, Sie sparen Zeit bei der Verwaltung Ihres Objekts.",
+  ],
+];
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  serviceType: "Objektbetreuung",
+  name: "Objektbetreuung Stuttgart",
+  description:
+    "Komplette Objektbetreuung für Wohn- und Gewerbeimmobilien in Stuttgart und Umgebung. Hausmeisterservice, Reinigung und Gartenpflege koordiniert aus einer Hand.",
+  url: "https://www.cleanallandmore.de/objektbetreuung",
+  provider: {
+    "@type": "LocalBusiness",
+    "@id": "https://www.cleanallandmore.de/#unternehmen",
+    name: "Clean all and more",
+  },
+  areaServed: [
+    { "@type": "City", name: "Stuttgart" },
+    { "@type": "City", name: "Ludwigsburg" },
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Leistungen in der Objektbetreuung",
+    itemListElement: services.map((item) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: item,
+      },
+    })),
+  },
+};
+---
+
+<BaseLayout
+  title="Objektbetreuung | Clean all and more"
+  description="Komplette Objektbetreuung für Wohn- und Gewerbeimmobilien in Stuttgart und Umgebung. Hausmeisterservice, Reinigung und Gartenpflege koordiniert aus einer Hand."
+  canonical="https://www.cleanallandmore.de/objektbetreuung"
+>
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify(serviceSchema)}
+  ></script>
+
+  <main class="bg-[#f8f6ee] text-[#111a13]">
+    <!-- Hero -->
+    <section class="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-5 py-24 md:grid-cols-2 md:px-8 md:py-32">
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-[0.22em] text-[#789873]">
+          Objektbetreuung Stuttgart
+        </p>
+
+        <h1 class="mt-5 text-4xl font-semibold leading-[1.05] tracking-[-0.04em] md:text-6xl">
+          Professionelle Objektbetreuung in Stuttgart und Umgebung
+        </h1>
+
+        <p class="mt-6 max-w-2xl text-lg leading-8 text-[#556055] md:text-xl md:leading-9">
+          Clean all and more übernimmt die koordinierte Rundum-Betreuung
+          Ihrer Immobilie – von regelmäßigen Kontrollgängen über
+          Hausmeisterservice bis zu Reinigung und Gartenpflege. Ein
+          Ansprechpartner, alle Leistungen im Blick.
+        </p>
+
+        <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+          <a
+            href="#kontakt"
+            class="rounded-full bg-[#789873] px-7 py-4 text-center font-semibold text-white shadow-lg shadow-[#789873]/20 transition hover:bg-[#6f8d67]"
+          >
+            Kostenloses Angebot anfragen
+          </a>
+
+          <a
+            href="/#leistungen"
+            class="rounded-full border border-[#d8d2c4] px-7 py-4 text-center font-semibold transition hover:bg-white"
+          >
+            Leistungen ansehen
+          </a>
+        </div>
+      </div>
+
+      <div class="overflow-hidden rounded-[32px] shadow-2xl shadow-black/10">
+        <img
+          src="/images/hero/hausmeisterservice-wohnanlage-stuttgart-1.webp"
+          alt="Professionelle Objektbetreuung für Wohnanlagen in Stuttgart"
+          width="720"
+          height="520"
+          loading="eager"
+          decoding="async"
+          class="h-[320px] w-full object-cover md:h-[520px]"
+        />
+      </div>
+    </section>
+
+    <!-- Einleitung -->
+    <section class="mx-auto max-w-5xl px-5 pb-20 md:px-8">
+      <h2 class="text-3xl font-semibold tracking-[-0.03em] md:text-4xl">
+        Objektbetreuung, die alle Aufgaben bündelt
+      </h2>
+
+      <p class="mt-5 text-lg leading-8 text-[#556055]">
+        Eine Immobilie zuverlässig zu betreuen bedeutet mehr als nur
+        Reinigung oder Gartenpflege. Unsere Objektbetreuung in Stuttgart
+        bringt alle wiederkehrenden Aufgaben rund um Ihr Objekt unter einem
+        Dach zusammen – koordiniert, dokumentiert und mit festem
+        Ansprechpartner.
+      </p>
+
+      <p class="mt-4 text-lg leading-8 text-[#556055]">
+        Ob Wohnanlage, Gewerbeobjekt oder Mehrfamilienhaus: Wir übernehmen die
+        Organisation und sorgen dafür, dass Hausmeisterservice, Reinigung und
+        Gartenpflege zuverlässig ineinandergreifen.
+      </p>
+    </section>
+
+    <!-- Warum -->
+    <section class="bg-white/45 py-20">
+      <div class="mx-auto max-w-6xl px-5 md:px-8">
+        <h2 class="text-3xl font-semibold tracking-[-0.03em] md:text-4xl">
+          Warum professionelle Objektbetreuung wichtig ist
+        </h2>
+
+        <div class="mt-8 grid gap-5 md:grid-cols-3">
+          {
+            whyPoints.map(([title, text]) => (
+              <div class="rounded-3xl border border-[#d8d2c4] bg-[#f8f6ee] p-7">
+                <h3 class="text-xl font-semibold">{title}</h3>
+                <p class="mt-3 leading-7 text-[#556055]">{text}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Leistungen -->
+    <section class="mx-auto max-w-6xl px-5 py-20 md:px-8">
+      <h2 class="text-3xl font-semibold tracking-[-0.03em] md:text-4xl">
+        Unsere Leistungen in der Objektbetreuung
+      </h2>
+
+      <div class="mt-8 grid gap-5 md:grid-cols-2">
+        {
+          services.map((item) => (
+            <div class="rounded-3xl border border-[#d8d2c4] bg-white/45 p-6 text-[#556055]">
+              {item}
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Vorteile -->
+    <section class="bg-[#111a13] py-20 text-white">
+      <div class="mx-auto max-w-6xl px-5 md:px-8">
+        <h2 class="text-3xl font-semibold tracking-[-0.03em] md:text-4xl">
+          Ihre Vorteile auf einen Blick
+        </h2>
+
+        <div class="mt-8 grid gap-4 md:grid-cols-3">
+          {
+            benefits.map((benefit) => (
+              <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+                {benefit}
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- So arbeiten wir -->
+    <section class="mx-auto max-w-6xl px-5 py-20 md:px-8">
+      <h2 class="text-3xl font-semibold tracking-[-0.03em] md:text-4xl">
+        So arbeiten wir
+      </h2>
+
+      <div class="mt-8 grid gap-5 md:grid-cols-4">
+        {
+          steps.map(([number, title, text]) => (
+            <div class="rounded-3xl border border-[#d8d2c4] bg-white/45 p-6">
+              <div class="flex h-10 w-10 items-center justify-center rounded-full bg-[#789873] font-bold text-white">
+                {number}
+              </div>
+              <h3 class="mt-5 text-lg font-semibold">{title}</h3>
+              <p class="mt-3 text-sm leading-7 text-[#556055]">{text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Einsatzgebiet -->
+    <section class="bg-white/45 py-20">
+      <div class="mx-auto max-w-5xl px-5 md:px-8">
+        <h2 class="text-3xl font-semibold tracking-[-0.03em] md:text-4xl">
+          Objektbetreuung in Stuttgart und Umgebung
+        </h2>
+
+        <p class="mt-5 text-lg leading-8 text-[#556055]">
+          Wir übernehmen die Objektbetreuung in Stuttgart und Umgebung für
+          Wohnanlagen, Mehrfamilienhäuser, Gewerbeobjekte und
+          Außenanlagen.
+        </p>
+
+        <p class="mt-4 text-lg leading-8 text-[#556055]">
+          Besonders gefragt ist unsere Objektbetreuung bei Hausverwaltungen
+          und Eigentümern, die eine zentrale, koordinierte und zuverlässige
+          Betreuung ihrer Immobilie wünschen.
+        </p>
+      </div>
+    </section>
+
+    <!-- Referenzen -->
+    <References client:load />
+
+    <!-- FAQ -->
+    <section class="mx-auto max-w-5xl px-5 py-20 md:px-8">
+      <h2 class="text-3xl font-semibold tracking-[-0.03em] md:text-4xl">
+        Häufige Fragen zur Objektbetreuung
+      </h2>
+
+      <div class="mt-8 space-y-5">
+        {
+          faqs.map(([question, answer]) => (
+            <div class="rounded-3xl border border-[#d8d2c4] bg-white/45 p-6">
+              <h3 class="text-xl font-semibold">{question}</h3>
+              <p class="mt-3 leading-7 text-[#556055]">{answer}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Kontakt -->
+    <RelatedServices current="/objektbetreuung" />
+    <Contact />
+  </main>
+</BaseLayout>
