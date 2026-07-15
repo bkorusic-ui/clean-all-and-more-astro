@@ -25,8 +25,13 @@ const currentPath = Astro.url.pathname;
       <img
         src="/logo.png"
         alt="Clean All and More"
+        width="160"
+        height="80"
+        fetchpriority="high"
+        loading="eager"
+        decoding="async"
         class="h-14 w-auto md:h-20"
-      />
+        />
     </a>
 
     <nav class="hidden items-center gap-11 text-[17px] font-medium text-[#4d594d] md:flex">
