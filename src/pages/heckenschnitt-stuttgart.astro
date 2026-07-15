@@ -5,63 +5,63 @@ import References from "../components/References.tsx";
 import RelatedServices from "../components/RelatedServices.astro";
 
 const services = [
-  "Regelmäßige Rasenpflege inklusive Mähen und Vertikutieren",
-  "Beet- und Pflanzpflege für gepflegte Grünflächen",
-  "Form- und Rückschnitt von Sträuchern und Gehölzen",
-  "Frühjahrsputz: Startklar machen des Gartens nach dem Winter",
-  "Herbstputz: Laubentfernung und Vorbereitung auf die kalte Jahreszeit",
-  "Unkrautentfernung und Pflege von Wegen und Randflächen",
-  "Düngen und Bewässerung nach saisonalem Bedarf",
-  "Saisonale Pflege für Privatgärten, Wohnanlagen und Gewerbeobjekte",
+  "Professioneller Heckenschnitt und Formschnitt",
+  "Rückschnitt von Hecken, Sträuchern und Gehölzen",
+  "Pflegeschnitt für ein gesundes Wachstum",
+  "Saisonaler Heckenschnitt im Frühjahr und Herbst",
+  "Entfernung von Wildwuchs und überwachsenen Bereichen",
+  "Pflege von Hecken bei Privatgärten, Wohnanlagen und Gewerbeobjekten",
+  "Saubere Ausführung mit professionellem Werkzeug",
+  "Entsorgung von Schnittgut nach Absprache",
 ];
 
 const benefits = [
-  "Gepflegter Garten das ganze Jahr über",
-  "Fachgerechte Pflege abgestimmt auf die Jahreszeit",
+  "Gepflegte und saubere Hecken das ganze Jahr über",
+  "Fachgerechter Schnitt für gesundes Wachstum",
   "Ordentliches Erscheinungsbild Ihrer Außenanlage",
   "Ideal für Privatkunden, Unternehmen und Hausverwaltungen",
   "Zuverlässige Termine nach Absprache",
-  "Auf Wunsch inklusive Grünschnitt-Entsorgung",
+  "Auf Wunsch inklusive Schnittgut-Entsorgung",
 ];
 
 const steps = [
   ["1", "Anfrage senden", "Sie kontaktieren uns per Formular, Telefon oder WhatsApp."],
-  ["2", "Garten & Bedarf klären", "Wir besprechen Größe, Zustand und gewünschte Pflegeleistungen."],
-  ["3", "Angebot erhalten", "Sie bekommen ein individuelles Angebot für Ihre Gartenpflege."],
-  ["4", "Pflege starten", "Wir kümmern uns zuverlässig und saisonal passend um Ihren Garten."],
+  ["2", "Hecke & Umfang klären", "Wir besprechen Größe, Zustand und gewünschten Schnitt."],
+  ["3", "Angebot erhalten", "Sie bekommen ein individuelles Angebot für Ihren Heckenschnitt."],
+  ["4", "Heckenschnitt durchführen", "Wir schneiden Ihre Hecke zuverlässig, sauber und nach Absprache."],
 ];
 
 const faqs = [
   [
-    "Welche Leistungen gehören zur Gartenpflege?",
-    "Unsere Gartenpflege umfasst Rasenpflege, Beet- und Pflanzpflege, Form- und Rückschnitt sowie Frühjahrs- und Herbstputz für einen gepflegten Garten das ganze Jahr über.",
+    "Welche Leistungen gehören zum Heckenschnitt?",
+    "Unser Heckenschnitt umfasst Form- und Rückschnitt, Pflegeschnitt für gesundes Wachstum sowie die Entfernung von Wildwuchs bei Hecken, Sträuchern und Gehölzen.",
   ],
   [
-    "Wann ist der beste Zeitpunkt für Form- und Rückschnitte?",
-    "Form- und Rückschnitte sind je nach Pflanzenart im Frühjahr oder Herbst sinnvoll. Wir beraten Sie gern, welcher Zeitpunkt zu Ihren Sträuchern und Gehölzen passt.",
+    "Wann ist der beste Zeitpunkt für den Heckenschnitt?",
+    "Form- und Rückschnitte sind je nach Heckenart im Frühjahr oder Herbst sinnvoll. Stärkere Rückschnitte sollten außerhalb der gesetzlichen Schonzeiten erfolgen. Wir beraten Sie gern passend zu Ihrer Hecke.",
   ],
   [
-    "Übernehmen Sie auch den Frühjahrs- und Herbstputz?",
-    "Ja. Wir bereiten Ihren Garten im Frühjahr auf die Saison vor und übernehmen im Herbst Laubentfernung sowie die Vorbereitung auf den Winter.",
+    "Übernehmen Sie auch regelmäßigen Heckenschnitt?",
+    "Ja. Wir übernehmen sowohl einmaligen Heckenschnitt als auch regelmäßige Pflegeintervalle für Privatgärten, Wohnanlagen und Gewerbeobjekte.",
   ],
   [
-    "Arbeiten Sie auch für Hausverwaltungen und Unternehmen?",
-    "Ja. Wir übernehmen Gartenpflege für Wohnanlagen, Außenbereiche, Gewerbeobjekte und Unternehmen in Stuttgart und Umgebung.",
+    "Entsorgen Sie das Schnittgut?",
+    "Auf Wunsch kann die Entsorgung des Schnittguts nach Absprache mit übernommen werden.",
   ],
 ];
 
 const whyPoints = [
   [
-    "Saisonale Pflege",
-    "Frühjahrsputz, Sommerpflege und Herbstputz sorgen dafür, dass Ihr Garten das ganze Jahr über gepflegt aussieht.",
-  ],
-  [
     "Gesundes Wachstum",
-    "Fachgerechte Form- und Rückschnitte fördern kräftige Pflanzen und dichte Hecken.",
+    "Ein fachgerechter Schnitt fördert dichte, kräftige und gepflegte Hecken.",
   ],
   [
     "Gepflegtes Erscheinungsbild",
-    "Ein ordentlicher Garten verbessert den ersten Eindruck Ihrer Immobilie und Außenanlage.",
+    "Saubere Hecken verbessern den ersten Eindruck Ihrer Immobilie und Außenanlage.",
+  ],
+  [
+    "Mehr Ordnung",
+    "Regelmäßige Pflege verhindert Wildwuchs und hält Wege, Einfahrten und Grundstücksgrenzen frei.",
   ],
 ];
 
@@ -81,11 +81,11 @@ const faqSchema = {
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  serviceType: "Gartenpflege",
-  name: "Gartenpflege Stuttgart",
+  serviceType: "Heckenschnitt",
+  name: "Heckenschnitt Stuttgart",
   description:
-    "Professionelle Gartenpflege für Privatgärten, Wohnanlagen und Gewerbe. Rasenpflege, Form- und Rückschnitte sowie Frühjahrs- und Herbstputz in Stuttgart, Ludwigsburg und Umgebung.",
-  url: "https://www.cleanallandmore.de/gartenpflege-stuttgart",
+    "Fachgerechter Heckenschnitt für Privatgärten, Wohnanlagen und Unternehmen. Präzise Pflege für gesunde und gepflegte Hecken im Frühjahr und Herbst in Stuttgart, Ludwigsburg und Umgebung.",
+  url: "https://www.cleanallandmore.de/heckenschnitt-stuttgart",
   provider: {
     "@type": "LocalBusiness",
     "@id": "https://www.cleanallandmore.de/#unternehmen",
@@ -97,7 +97,7 @@ const serviceSchema = {
   ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "Leistungen in der Gartenpflege",
+    name: "Leistungen beim Heckenschnitt",
     itemListElement: services.map((item) => ({
       "@type": "Offer",
       itemOffered: {
@@ -110,9 +110,9 @@ const serviceSchema = {
 ---
 
 <BaseLayout
-  title="Gartenpflege | Clean all and more"
-  description="Professionelle Gartenpflege für Privatgärten, Wohnanlagen und Gewerbe. Rasenpflege, Form- und Rückschnitte sowie Frühjahrs- und Herbstputz in Stuttgart, Ludwigsburg und Umgebung."
-  canonical="https://www.cleanallandmore.de/gartenpflege-stuttgart"
+  title="Heckenschnitt | Clean all and more"
+  description="Fachgerechter Heckenschnitt für Privatgärten, Wohnanlagen und Unternehmen. Präzise Pflege für gesunde und gepflegte Hecken im Frühjahr und Herbst in Stuttgart, Ludwigsburg und Umgebung."
+  canonical="https://www.cleanallandmore.de/heckenschnitt-stuttgart"
 >
   <script
     type="application/ld+json"
@@ -128,18 +128,18 @@ const serviceSchema = {
     <section class="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-5 py-24 md:grid-cols-2 md:px-8 md:py-32">
       <div>
         <p class="text-sm font-semibold uppercase tracking-[0.22em] text-[#789873]">
-          Gartenpflege Stuttgart
+          Heckenschnitt Stuttgart
         </p>
 
         <h1 class="mt-5 text-4xl font-semibold leading-[1.05] tracking-[-0.04em] md:text-6xl">
-          Professionelle Gartenpflege in Stuttgart
+          Professioneller Heckenschnitt in Stuttgart
         </h1>
 
         <p class="mt-6 max-w-2xl text-lg leading-8 text-[#556055] md:text-xl md:leading-9">
-          Clean all and more übernimmt die zuverlässige Pflege Ihres Gartens
-          – von Rasenpflege über Form- und Rückschnitte bis zu Frühjahrs- und
-          Herbstputz. Für Privatgärten, Wohnanlagen und Gewerbeobjekte in
-          Stuttgart und Umgebung.
+          Clean all and more übernimmt fachgerechten Heckenschnitt,
+          Formschnitt und Rückschnitt im Frühjahr und Herbst für
+          Privatgärten, Wohnanlagen und Gewerbeobjekte in Stuttgart und
+          Umgebung.
         </p>
 
         <div class="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -161,8 +161,8 @@ const serviceSchema = {
 
       <div class="overflow-hidden rounded-[32px] shadow-2xl shadow-black/10">
         <img
-          src="/images/garden/gartenpflege-rasen-hecke2.webp"
-          alt="Professionelle Gartenpflege und Rasenpflege in Stuttgart"
+          src="/images/garden/heckenschnitt-stuttgart-cut3.webp"
+          alt="Professioneller Heckenschnitt in Stuttgart"
           width="720"
           height="520"
           loading="eager"
@@ -175,20 +175,20 @@ const serviceSchema = {
     <!-- Einleitung -->
     <section class="mx-auto max-w-5xl px-5 pb-20 md:px-8">
       <h2 class="text-3xl font-semibold tracking-[-0.03em] md:text-4xl">
-        Gartenpflege, die zu jeder Jahreszeit passt
+        Fachgerechter Heckenschnitt für gepflegte Außenanlagen
       </h2>
 
       <p class="mt-5 text-lg leading-8 text-[#556055]">
-        Ein gepflegter Garten braucht das ganze Jahr über Aufmerksamkeit.
-        Unsere Gartenpflege in Stuttgart umfasst Rasenpflege, Beet- und
-        Pflanzpflege sowie Form- und Rückschnitte im Frühjahr und Herbst –
-        damit Ihr Garten dauerhaft gepflegt und gesund bleibt.
+        Gepflegte Hecken sorgen für Struktur, Sichtschutz und ein ordentliches
+        Erscheinungsbild. Damit Hecken gesund wachsen und dauerhaft schön
+        aussehen, ist ein regelmäßiger und fachgerechter Schnitt im Frühjahr
+        und Herbst wichtig.
       </p>
 
       <p class="mt-4 text-lg leading-8 text-[#556055]">
-        Ob Privatgarten, Wohnanlage oder Gewerbeobjekt: Wir arbeiten
-        zuverlässig, sorgfältig und passend zum Zustand und zur Saison Ihrer
-        Grünflächen.
+        Wir übernehmen Heckenschnitt in Stuttgart und Umgebung für
+        Privatkunden, Wohnanlagen, Unternehmen und Hausverwaltungen. Dabei
+        arbeiten wir sauber, zuverlässig und passend zum Zustand Ihrer Hecke.
       </p>
     </section>
 
@@ -196,7 +196,7 @@ const serviceSchema = {
     <section class="bg-white/45 py-20">
       <div class="mx-auto max-w-6xl px-5 md:px-8">
         <h2 class="text-3xl font-semibold tracking-[-0.03em] md:text-4xl">
-          Warum regelmäßige Gartenpflege wichtig ist
+          Warum regelmäßiger Heckenschnitt wichtig ist
         </h2>
 
         <div class="mt-8 grid gap-5 md:grid-cols-3">
@@ -215,7 +215,7 @@ const serviceSchema = {
     <!-- Leistungen -->
     <section class="mx-auto max-w-6xl px-5 py-20 md:px-8">
       <h2 class="text-3xl font-semibold tracking-[-0.03em] md:text-4xl">
-        Unsere Leistungen in der Gartenpflege
+        Unsere Leistungen beim Heckenschnitt
       </h2>
 
       <div class="mt-8 grid gap-5 md:grid-cols-2">
@@ -273,18 +273,18 @@ const serviceSchema = {
     <section class="bg-white/45 py-20">
       <div class="mx-auto max-w-5xl px-5 md:px-8">
         <h2 class="text-3xl font-semibold tracking-[-0.03em] md:text-4xl">
-          Gartenpflege in Stuttgart und Umgebung
+          Heckenschnitt in Stuttgart und Umgebung
         </h2>
 
         <p class="mt-5 text-lg leading-8 text-[#556055]">
-          Wir übernehmen Gartenpflege in Stuttgart und Umgebung für
+          Wir übernehmen Heckenschnitt in Stuttgart und Umgebung für
           Privatgärten, Wohnanlagen, Gewerbeobjekte und Außenanlagen.
         </p>
 
         <p class="mt-4 text-lg leading-8 text-[#556055]">
-          Besonders gefragt ist unsere Gartenpflege bei Kunden, die Wert auf
-          einen gepflegten Garten in jeder Jahreszeit legen – vom
-          Frühjahrsputz bis zum Herbstputz.
+          Besonders gefragt ist unser Heckenschnitt bei Kunden, die Wert auf
+          gepflegte Grundstücksgrenzen, saubere Außenbereiche und
+          regelmäßige Pflege im Frühjahr und Herbst legen.
         </p>
       </div>
     </section>
@@ -295,7 +295,7 @@ const serviceSchema = {
     <!-- FAQ -->
     <section class="mx-auto max-w-5xl px-5 py-20 md:px-8">
       <h2 class="text-3xl font-semibold tracking-[-0.03em] md:text-4xl">
-        Häufige Fragen zur Gartenpflege
+        Häufige Fragen zum Heckenschnitt
       </h2>
 
       <div class="mt-8 space-y-5">
@@ -311,7 +311,7 @@ const serviceSchema = {
     </section>
 
     <!-- Kontakt -->
-    <RelatedServices current="/gartenpflege-stuttgart" />
+    <RelatedServices current="/heckenschnitt-stuttgart" />
     <Contact />
   </main>
 </BaseLayout>
