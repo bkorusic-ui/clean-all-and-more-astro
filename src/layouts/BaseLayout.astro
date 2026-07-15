@@ -88,46 +88,50 @@ const localBusinessSchema = {
 <!doctype html>
 <html lang="de">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>{title}</title>
-    <meta name="description" content={description} />
+  <title>{title}</title>
+  <meta name="description" content={description} />
 
-    <link rel="canonical" href={currentUrl} />
+  <meta name="robots" content="index,follow" />
+  <meta name="googlebot" content="index,follow" />
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="de_DE" />
-    <meta property="og:site_name" content="Clean all and more" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:url" content={currentUrl} />
-    <meta property="og:image" content={imageUrl} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta
-      property="og:image:alt"
-      content="Clean all and more – Hausmeisterservice, Gartenpflege und Gebäudereinigung"
-    />
+  <link rel="canonical" href={currentUrl} />
 
-    <!-- Twitter / X -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={imageUrl} />
-    <meta
-      name="twitter:image:alt"
-      content="Clean all and more – Hausmeisterservice, Gartenpflege und Gebäudereinigung"
-    />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="de_DE" />
+  <meta property="og:site_name" content="Clean all and more" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={currentUrl} />
+  <meta property="og:image" content={imageUrl} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta
+    property="og:image:alt"
+    content="Clean all and more – Hausmeisterservice, Gartenpflege und Gebäudereinigung"
+  />
 
-    <script
-      type="application/ld+json"
-      set:html={JSON.stringify(localBusinessSchema)}
-    ></script>
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={imageUrl} />
+  <meta
+    name="twitter:image:alt"
+    content="Clean all and more – Hausmeisterservice, Gartenpflege und Gebäudereinigung"
+  />
 
-    <link rel="icon" href="/favicon.svg" />
-  </head>
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify(localBusinessSchema)}
+  ></script>
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+</head>
 
   <body>
     <Header />
