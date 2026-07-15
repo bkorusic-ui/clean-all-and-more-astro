@@ -5,42 +5,42 @@ const GA_ID = "G-27XCZN8GEH";
 
 <div
   id="cookie-banner"
-  class="fixed inset-x-4 bottom-5 z-[999999] mx-auto hidden max-w-4xl rounded-[28px] border border-[#d9d2c5] bg-[#fbf8f0] p-5 shadow-2xl md:p-6"
+  class="fixed inset-x-3 bottom-3 z-[999999] mx-auto hidden max-w-2xl rounded-[22px] border border-[#ddd6c8] bg-[#fbf8f0] p-4 shadow-[0_14px_40px_rgba(17,26,19,0.14)] sm:inset-x-5 sm:bottom-5 sm:p-5"
   role="dialog"
   aria-modal="true"
   aria-labelledby="cookie-banner-title"
   aria-describedby="cookie-banner-description"
+  aria-hidden="true"
 >
-  <div class="grid gap-5 md:grid-cols-[1fr_auto] md:items-center">
+  <div class="grid gap-4 md:grid-cols-[1fr_auto] md:items-center md:gap-6">
     <div>
       <div
-        class="mb-3 inline-flex rounded-full bg-[#e5eee1] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#789873]"
+        class="mb-2 inline-flex rounded-full bg-[#e5eee1] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#789873]"
       >
         Datenschutz
       </div>
 
       <h2
         id="cookie-banner-title"
-        class="text-[20px] font-semibold tracking-[-0.03em] text-[#111a13]"
+        class="text-[18px] font-semibold tracking-[-0.03em] text-[#111a13] sm:text-[20px]"
       >
         Cookies &amp; Analyse
       </h2>
 
       <p
         id="cookie-banner-description"
-        class="mt-2 max-w-2xl text-[14px] leading-6 text-[#556055]"
+        class="mt-1.5 max-w-xl text-[13px] leading-5 text-[#556055] sm:text-[14px] sm:leading-6"
       >
-        Wir verwenden Cookies und Google Analytics, um unsere Website
-        kontinuierlich zu verbessern. Google Analytics wird ausschließlich
-        nach Ihrer Zustimmung aktiviert.
+        Wir verwenden Cookies zur Verbesserung unserer Website. Google
+        Analytics wird nur nach Ihrer Zustimmung aktiviert.
       </p>
     </div>
 
-    <div class="flex flex-col gap-2 sm:flex-row md:flex-col">
+    <div class="grid grid-cols-1 gap-2 sm:grid-cols-2 md:w-[290px]">
       <button
         id="accept-cookies"
         type="button"
-        class="rounded-full bg-[#789873] px-6 py-3 text-[14px] font-semibold text-white shadow-lg shadow-[#789873]/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#6f8d67]"
+        class="min-h-11 rounded-full bg-[#789873] px-5 py-2.5 text-[14px] font-semibold text-white shadow-[0_8px_22px_rgba(120,152,115,0.22)] transition duration-200 hover:-translate-y-0.5 hover:bg-[#6f8d67] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#789873] focus-visible:ring-offset-2 focus-visible:ring-offset-[#fbf8f0]"
       >
         Akzeptieren
       </button>
@@ -48,9 +48,9 @@ const GA_ID = "G-27XCZN8GEH";
       <button
         id="reject-cookies"
         type="button"
-        class="rounded-full border border-[#d9d2c5] bg-white px-6 py-3 text-[14px] font-semibold text-[#556055] transition-all duration-300 hover:bg-[#f4f1e8]"
+        class="min-h-11 rounded-full border border-[#d9d2c5] bg-white px-5 py-2.5 text-[14px] font-semibold text-[#556055] transition duration-200 hover:bg-[#f4f1e8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#789873] focus-visible:ring-offset-2 focus-visible:ring-offset-[#fbf8f0]"
       >
-        Nicht Akzeptieren
+        Ablehnen
       </button>
     </div>
   </div>
@@ -65,24 +65,28 @@ const GA_ID = "G-27XCZN8GEH";
     if (!(banner instanceof HTMLElement)) return;
 
     banner.classList.remove("hidden");
+    banner.setAttribute("aria-hidden", "false");
 
     window.requestAnimationFrame(() => {
       banner.classList.add("cookie-banner-visible");
     });
 
-    if (acceptButton instanceof HTMLButtonElement) {
-      acceptButton.focus();
-    }
+    window.setTimeout(() => {
+      if (acceptButton instanceof HTMLButtonElement) {
+        acceptButton.focus();
+      }
+    }, 260);
   }
 
   function hideBanner() {
     if (!(banner instanceof HTMLElement)) return;
 
     banner.classList.remove("cookie-banner-visible");
+    banner.setAttribute("aria-hidden", "true");
 
     window.setTimeout(() => {
       banner.classList.add("hidden");
-    }, 250);
+    }, 220);
   }
 
   function loadAnalytics() {
@@ -128,9 +132,7 @@ const GA_ID = "G-27XCZN8GEH";
 
   if (!consent) {
     showBanner();
-  }
-
-  if (consent === "accepted") {
+  } else if (consent === "accepted") {
     loadAnalytics();
   }
 
@@ -140,7 +142,11 @@ const GA_ID = "G-27XCZN8GEH";
   window.addEventListener("open-cookie-settings", showBanner);
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
+    if (
+      event.key === "Escape" &&
+      banner instanceof HTMLElement &&
+      !banner.classList.contains("hidden")
+    ) {
       hideBanner();
     }
   });
@@ -149,15 +155,22 @@ const GA_ID = "G-27XCZN8GEH";
 <style>
   #cookie-banner {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(18px) scale(0.985);
     transition:
-      opacity 250ms ease,
-      transform 250ms ease;
+      opacity 220ms ease,
+      transform 220ms ease;
   }
 
   #cookie-banner.cookie-banner-visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
+  }
+
+  @media (max-width: 639px) {
+    #cookie-banner {
+      max-height: calc(100vh - 24px);
+      overflow-y: auto;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
